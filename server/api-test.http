@@ -1,1 +1,1 @@
-//API TESTS WILL GO IN HERE
+GET http://localhost:8080/items
