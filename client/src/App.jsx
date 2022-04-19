@@ -1,10 +1,9 @@
-
-import { Sample } from "./components/index"
+import { Header } from './components/index';
 
 function App() {
   return (
     <div>
-      <Sample />
+      <Header />
     </div>
   );
 }
