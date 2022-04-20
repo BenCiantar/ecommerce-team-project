@@ -1,1 +1,2 @@
-GET http://localhost:8081/items
+GET http://localhost:8080/items
+Content-Type: application/json

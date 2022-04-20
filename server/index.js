@@ -7,6 +7,7 @@ import cors from "cors";
 const MONGODB_URL =
   process.env.MONGODB_URL ||
   "mongodb+srv://userAdmin:admin123@cluster0.1v7rv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+
 const mongoClient = new mongodb.MongoClient(MONGODB_URL);
 mongoClient.connect();
 
@@ -37,10 +38,10 @@ app.use(express.json());
 app.use(cors({ origin: "http://localhost:3000" }));
 
 app.get("/items", async (request, response) => {
-  //   const body = request.body;
   const products = await itemsCollection.find({}).toArray();
   response.json(products);
 });
+
 
 app.get("/cart", async (request, response) => {
   const cartItems = await cartCollection.find({}).toArray();
@@ -48,6 +49,15 @@ app.get("/cart", async (request, response) => {
 });
 
 // Keep server running
+
+//Get all items from the db that match the category
+app.get("/items/:category", async (request, response) => {
+  const category = request.params.category;
+  const filteredItems = await itemsCollection.find({category: category}).toArray(); 
+  response.json(filteredItems);
+});
+
+//Keep server running
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}.`);
 });
