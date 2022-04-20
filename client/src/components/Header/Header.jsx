@@ -1,4 +1,6 @@
+
 import { AiOutlineShoppingCart } from "react-icons/ai"
+import { Cart } from "../../components/index";
 
 const Header = () => {
   return <div>
