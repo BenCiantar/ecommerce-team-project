@@ -1,12 +1,21 @@
 const Header = () => {
-  return <div className=" flex w-full h-12 bg-black ">
-    <div className=" flex justify-start width-1/2 text-xl ">
+  return <div>
+  <div className=" flex w-screen h-12 bg-black justify-between items-center ">
+    <h2 className=" text-xl text-white pl-1 ">
       logo
+    </h2>
+    <div className=" flex ">
+    <h3 className=" text-base text-white ">
+      cart
+    </h3>
+    <h3 className=" text-base text-white px-2 ">
+      menu
+    </h3>
+
     </div>
-    <div className=" flex justify-end width-1/2 text-base ">
-      cart, hamburger
-    </div>
-  </div>;
+    
+  </div>
+  </div>
 };
 
 export default Header;
