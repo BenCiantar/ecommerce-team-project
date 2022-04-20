@@ -1,3 +1,5 @@
+import { AiOutlineShoppingCart } from "react-icons/ai"
+
 const Header = () => {
   return <div>
 
@@ -7,8 +9,8 @@ const Header = () => {
           logo
         </h2>
       </div>
-      <div className=" flex ">
-        <img className=" width-4 " src="./shopping-cart.png"></img>
+      <div className=" flex items-center ">
+        <AiOutlineShoppingCart className=" text-2xl " />
         <h3 className=" text-base text-black px-2 ">
           menu
         </h3>
