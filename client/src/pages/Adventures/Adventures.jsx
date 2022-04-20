@@ -4,7 +4,7 @@ import { useEffect } from "react";
 const Adventures = () => {
 
   useEffect(() => {
-    getItemsFromDb("Adventures")
+    getItemsFromDb("Adventure")
   }, []);
 
   return <div>Adventures</div>;

@@ -4,7 +4,8 @@ import mongodb from "mongodb";
 import cors from "cors";
 
 //Configure MongoDB
-const MONGODB_URL = process.env.MONGODB_URL || "mongodb://localhost:27017";
+const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://userAdmin:admin123@cluster0.1v7rv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+console.log(process.env.MONGODB_URL);
 const mongoClient = new mongodb.MongoClient(MONGODB_URL);
 mongoClient.connect();
 
@@ -31,10 +32,9 @@ const requestLogger = (request, response, next) => {
 
 app.use(requestLogger);
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(cors({ origin: "*" }));
 
 app.get("/items", async (request, response) => {
-  //   const body = request.body;
   const products = await itemsCollection.find({}).toArray();
   response.json(products);
 });
