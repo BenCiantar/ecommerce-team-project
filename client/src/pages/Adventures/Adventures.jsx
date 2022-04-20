@@ -6,14 +6,14 @@ const Adventures = () => {
   const [items, setItems] = useState([]);
   
   useEffect(() => {
-   rows = getItemsFromDb("Adventure", setItems);
+    rows = getItemsFromDb("Adventure", setItems);
   }, []);
 
   let rows = renderAllCategoryItems(items);
   return (
     <div>
       {rows}
-    </div>;
-   );
+    </div>
+  );
 };
 export default Adventures;
