@@ -32,7 +32,7 @@ const requestLogger = (request, response, next) => {
 
 app.use(requestLogger);
 app.use(express.json());
-app.use(cors({ origin: "*" }));
+app.use(cors({ origin: "http://localhost:3000" }));
 
 app.get("/items", async (request, response) => {
   const products = await itemsCollection.find({}).toArray();
