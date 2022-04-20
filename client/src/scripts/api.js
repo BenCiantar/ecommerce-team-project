@@ -1,8 +1,3 @@
-//function calls get method
-
-// fetch
-//put the result into an array
-//call a function that renders the items on the page
 import { API_BASE_URL } from "../config"
 
 export function getItemsFromDb(category) {
