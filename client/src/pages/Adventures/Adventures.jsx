@@ -1,12 +1,19 @@
 import { getItemsFromDb } from "../../scripts/api";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { renderAllCategoryItems } from "../../scripts/tools";
 
 const Adventures = () => {
-
+  const [items, setItems] = useState([]);
+  
   useEffect(() => {
-    getItemsFromDb("Adventure")
+   rows = getItemsFromDb("Adventure", setItems);
   }, []);
 
-  return <div>Adventures</div>;
+  let rows = renderAllCategoryItems(items);
+  return (
+    <div>
+      {rows}
+    </div>;
+   );
 };
 export default Adventures;
