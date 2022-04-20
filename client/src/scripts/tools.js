@@ -1,9 +1,9 @@
 export function renderAllCategoryItems(items) {
-    let rows = []
+    let rows = [];
     items.forEach(item => {
-        rows.push(<p>{item.name}</p>)
+        rows.push(<p>{item.name}</p>);
     });
-    return rows
+    return rows;
 }
 
 export function toggleHidden(target) {
