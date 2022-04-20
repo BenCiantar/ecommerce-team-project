@@ -39,6 +39,13 @@ app.get("/items", async (request, response) => {
   response.json(products);
 });
 
+//get all items from the db that match the category
+// app.get("/items", async (request, response) => {
+//   //   const body = request.body;
+//   const products = await itemsCollection.find({}).toArray();
+//   response.json(products);
+// });
+
 // Keep server running
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}.`);
