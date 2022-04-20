@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-const Cart = () => {
+const Cart = ({ onCloseCart }) => {
   const [cartItems, setCartItems] = React.useState([]);
   const totalPrice = cartItems.reduce((sum, obj) => obj.price + sum, 0);
   React.useEffect(() => {
@@ -27,7 +27,7 @@ const Cart = () => {
           ))}
           <div className="subtotal">Subtotal: {totalPrice} kr</div>
           <div className="close_cart">
-            <a href="#">Continue shopping</a>
+            <p onClick={onCloseCart}>Continue shopping</p>
           </div>
           <button>Add to card</button>
         </section>
