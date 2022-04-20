@@ -4,12 +4,15 @@ import mongodb from "mongodb";
 import cors from "cors";
 
 //Configure MongoDB
-const MONGODB_URL = process.env.MONGODB_URL || "mongodb://localhost:27017";
+const MONGODB_URL =
+  process.env.MONGODB_URL ||
+  "mongodb+srv://userAdmin:admin123@cluster0.1v7rv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const mongoClient = new mongodb.MongoClient(MONGODB_URL);
 mongoClient.connect();
 
 const db = mongoClient.db("ecommerce-group");
 const itemsCollection = db.collection("items");
+const cartCollection = db.collection("cart");
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -37,6 +40,11 @@ app.get("/items", async (request, response) => {
   //   const body = request.body;
   const products = await itemsCollection.find({}).toArray();
   response.json(products);
+});
+
+app.get("/cart", async (request, response) => {
+  const cartItems = await cartCollection.find({}).toArray();
+  response.json(cartItems);
 });
 
 // Keep server running
