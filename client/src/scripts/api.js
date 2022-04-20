@@ -1,17 +1,18 @@
 import { API_BASE_URL } from "../config"
 
-export function getItemsFromDb(category) {
+export function getItemsFromDb(category, setItems) {
     fetch (`${API_BASE_URL}/items/${category}`, {
 
         headers: {
             "content-type": "application/json"
         }
     })
-    .then((response) => {
+    .then((response) => {   
         return response.json()
     })
     .then((result) => {
-        console.log(result)
+        setItems(result)
+
     })
     .catch((err) => {
         console.error(err)
