@@ -5,7 +5,7 @@
 //call a function that renders the items on the page
 import { API_BASE_URL } from "../../config"
 
-function getItemsFromDb(category) {
+export function getItemsFromDb(category) {
     fetch (`${API_BASE_URL}${category}`, {
 
         headers: {
