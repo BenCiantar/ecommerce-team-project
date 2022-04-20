@@ -39,14 +39,14 @@ app.get("/items", async (request, response) => {
   response.json(products);
 });
 
-//get all items from the db that match the category
+//Get all items from the db that match the category
 app.get("/items/:category", async (request, response) => {
   const category = request.params.category;
   const filteredItems = await itemsCollection.find({category: category}).toArray(); 
   response.json(filteredItems);
 });
 
-// Keep server running
+//Keep server running
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}.`);
 });
