@@ -1,9 +1,9 @@
 const Header = () => {
-  return <div class="header-box">
-    <div class="header-box-left">
+  return <div className=" flex w-full h-12 bg-black ">
+    <div className=" flex justify-start width-1/2 text-xl ">
       logo
     </div>
-    <div class="header-box-right">
+    <div className=" flex justify-end width-1/2 text-base ">
       cart, hamburger
     </div>
   </div>;
