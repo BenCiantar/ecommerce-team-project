@@ -1,6 +1,6 @@
-import { Header } from './components/index';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Home, Adventures, Culture, BadURL404 } from './pages/index';
+import { Header } from "./components/index";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Home, Adventures, Culture, BadURL404 } from "./pages/index";
 
 function App() {
   return (
