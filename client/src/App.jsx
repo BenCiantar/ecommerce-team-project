@@ -5,6 +5,7 @@ import { Home, Adventures, Culture, BadURL404 } from "./pages/index";
 function App() {
   return (
     <div>
+      <Header />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
