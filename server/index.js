@@ -40,11 +40,11 @@ app.get("/items", async (request, response) => {
 });
 
 //get all items from the db that match the category
-// app.get("/items", async (request, response) => {
-//   //   const body = request.body;
-//   const products = await itemsCollection.find({}).toArray();
-//   response.json(products);
-// });
+app.get("/items/:category", async (request, response) => {
+  const category = request.params.category;
+  const filteredItems = await itemsCollection.find({category: category}).toArray(); 
+  response.json(filteredItems);
+});
 
 // Keep server running
 app.listen(PORT, () => {
