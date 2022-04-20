@@ -1,4 +1,4 @@
-import Cart from "../Cart/Cart";
+import { Cart } from "../../components/index";
 const Header = () => {
   return (
     <div>
