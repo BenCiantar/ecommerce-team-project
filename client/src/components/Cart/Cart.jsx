@@ -12,7 +12,7 @@ const Cart = ({ onCloseCart }) => {
   console.log(cartItems, " cartItems");
 
   return (
-    <div>
+    <div className="z-50 absolute bg-white hidden" id="cart">
       <div className="overlay">
         <section className="drawer">
           <h1>Your shopping cart</h1>
