@@ -1,6 +1,6 @@
 import React from "react";
 
-const Cart = ({ onCloseCart, cartItems, setCartItems }) => {
+const Cart = ({ cartItems, setCartItems }) => {
   const totalPrice = cartItems.reduce((sum, obj) => obj.price + sum, 0);
 
   return (
@@ -18,9 +18,6 @@ const Cart = ({ onCloseCart, cartItems, setCartItems }) => {
             </div>
           ))}
           <div className="subtotal">Subtotal: {totalPrice} kr</div>
-          <div className="close_cart">
-            <p onClick={onCloseCart}>Continue shopping</p>
-          </div>
           <button>Add to card</button>
         </section>
       </div>

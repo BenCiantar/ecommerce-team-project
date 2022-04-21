@@ -4,8 +4,8 @@ import { toggleHidden } from "../../scripts/tools";
 import { Cart } from "../index";
 
 const Header = (props) => {
-  <Cart {...props} />
   return (
+    <>
     <div>
       <div className=" flex w-screen h-12 bg-white justify-between items-center border-b-2 border-black ">
         <div className=" flex ">
@@ -20,8 +20,9 @@ const Header = (props) => {
           <h3 className=" text-base text-black px-2 ">menu</h3>
         </div>
       </div>
-      <Cart />
     </div>
+    <Cart {...props} />
+    </>
   );
 };
 
