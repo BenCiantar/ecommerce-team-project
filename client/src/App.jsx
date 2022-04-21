@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div>
-      <Header onClickCart={() => setCartOpened(true)} cartItems={ cartItems } setCartItems={ setCartItems } />
+      <Header cartItems={ cartItems } setCartItems={ setCartItems } />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
