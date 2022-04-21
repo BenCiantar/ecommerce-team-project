@@ -1,7 +1,8 @@
 import React from "react";
+import { placeOrder } from "../../scripts/tools"
 
 const Cart = ({ cartItems, setCartItems }) => {
-  const totalPrice = cartItems.reduce((sum, obj) => obj.price + sum, 0);
+const totalPrice = cartItems.reduce((sum, obj) => obj.price + sum, 0);
 
   return (
     <div className="z-50 absolute bg-slate-300 hidden w-full overflow-x-hidden top-12 overflow-y-auto h-full right-0 min-w-400" id="cart">
@@ -17,7 +18,7 @@ const Cart = ({ cartItems, setCartItems }) => {
             </div>
           ))}
           <div className="">Total: {totalPrice} kr</div>
-          <button className="bg-green-500 text-white p-2 rounded-md shadow-md">Place Order</button>
+          <button className="bg-green-500 text-white p-2 rounded-md shadow-md" onClick={() => placeOrder(totalPrice)}>Place Order</button>
         </section>
       </div>
     </div>
