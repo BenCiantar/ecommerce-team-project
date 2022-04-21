@@ -1,7 +1,9 @@
 import React from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { Cart } from "../index";
 
 const Header = (props) => {
+  <Cart {...props} />
   return (
     <div>
       <div className=" flex w-screen h-12 bg-white justify-between items-center border-b-2 border-black ">

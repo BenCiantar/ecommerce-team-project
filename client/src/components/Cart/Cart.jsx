@@ -1,7 +1,6 @@
 import React from "react";
-import axios from "axios";
 
-const Cart = ({ onCloseCart }) => {
+const Cart = ({ onCloseCart, cartItems, setCartItems }) => {
   const totalPrice = cartItems.reduce((sum, obj) => obj.price + sum, 0);
 
   return (
