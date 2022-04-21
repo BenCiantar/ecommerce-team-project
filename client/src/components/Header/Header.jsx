@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { AiOutlineMenu } from "react-icons/ai";
 import { AiOutlineClose } from "react-icons/ai";
+import { toggleHidden } from "../../scripts/tools";
+import { Cart } from "../index";
 
-
-
-function Header () {
+const Header = (props) => {
 
     const [isMobileMenuOpen, setisMobileMenuOpen] = useState(false)
 
@@ -19,7 +19,10 @@ function Header () {
                 <h2>Logo</h2>
             </div>
             <div className=" cart-and-menu flex items-center ">
-                <AiOutlineShoppingCart className=" w-8 h-8 "/>
+                <AiOutlineShoppingCart
+                  className=" text-2xl "
+                  onClick={() => toggleHidden("cart")}
+                />
                 <ul className=" hidden menu-list lg:flex lg:flex-row text-base font-bold ">
                     <li className="menu-list-item px-2 ">Home</li>
                     <li className="menu-list-item px-2 ">Adventures</li>
@@ -30,8 +33,10 @@ function Header () {
                 </button>
                 {(isMobileMenuOpen) ? MobileMenu() : ''}
             </div>
+            <Cart {...props} />
         </div>
     )
+
 };
 
 function MobileMenu(){
@@ -45,6 +50,5 @@ function MobileMenu(){
         </div>
     )
 }
-
 
 export default Header;
