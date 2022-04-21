@@ -41,8 +41,8 @@ const Header = (props) => {
 
 function MobileMenu(){
     return (
-        <div className="top-12 lg:hidden bg-black text-white">
-            <ul className=" menu-list flex flex-col text-base font-bold ">
+        <div className="top-12 absolute lg:hidden bg-black text-white z-10 right-0 overflow-x-hidden h-full w-full">
+            <ul className=" menu-list flex flex-col text-base font-bold items-center">
                     <li className="menu-list-item py-2 hover:bg-white hover:text-black ">Home</li>
                     <li className="menu-list-item py-2 hover:bg-white hover:text-black ">Adventures</li>
                     <li className="menu-list-item py-2 hover:bg-white hover:text-black ">Culture</li>
