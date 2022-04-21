@@ -4,22 +4,20 @@ const Cart = ({ cartItems, setCartItems }) => {
   const totalPrice = cartItems.reduce((sum, obj) => obj.price + sum, 0);
 
   return (
-    <div className="z-50 absolute bg-white hidden" id="cart">
+    <div className="z-50 absolute bg-slate-300 hidden w-full overflow-x-hidden top-12 overflow-y-auto h-full right-0 min-w-400" id="cart">
       <div className="overlay">
-        <section className="drawer">
+        <section className=" ">
           <h1>Your shopping cart</h1>
           {cartItems.map((obj) => (
-            <div className="cart_item">
+            <div className=" flex flex-row justify-between items-center bg-slate-200 m-4">
+              <img className="w-28" src={obj.image} alt="" />
               <p>{obj.name}</p>
-              <p>People: {obj.people}</p>
-              <img src={obj.image} alt="" />
-              <div className="price">Price: {obj.price} kr</div>
-              <div className="quantity">Quantity: {obj.quantity} st</div>
-              <div className="description">{obj.description}</div>
+              <p>{obj.quantity}</p>
+              <div className="">{obj.price} kr</div>
             </div>
           ))}
-          <div className="subtotal">Subtotal: {totalPrice} kr</div>
-          <button>Add to card</button>
+          <div className="">Total: {totalPrice} kr</div>
+          <button className="bg-green-500 text-white p-2 rounded-md shadow-md">Place Order</button>
         </section>
       </div>
     </div>
