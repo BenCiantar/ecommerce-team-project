@@ -2,14 +2,7 @@ import React from "react";
 import axios from "axios";
 
 const Cart = ({ onCloseCart }) => {
-  const [cartItems, setCartItems] = React.useState([]);
   const totalPrice = cartItems.reduce((sum, obj) => obj.price + sum, 0);
-  React.useEffect(() => {
-    axios.get("http://localhost:8080/cart").then((res) => {
-      setCartItems(res.data);
-    });
-  }, []);
-  console.log(cartItems, " cartItems");
 
   return (
     <div>
