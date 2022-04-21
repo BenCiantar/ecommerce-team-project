@@ -1,9 +1,24 @@
+import { FaShoppingCart, FaDollarSign } from "react-icons/fa";
+
 export function renderAllCategoryItems(items) {
     let rows = [];
     items.forEach(item => {
-        rows.push(<p>{item.name}</p>);
+        rows.push(
+        <div>
+            <h1>{item.name}</h1>
+            <p><FaDollarSign />{item.price}</p>
+            <p>{item.description}</p>
+            <button className="buy-btn btn-in-stock" onClick={() => addItemToCart(item)}>
+                <FaShoppingCart /> {item.price} kr
+            </button>
+        </div>
+        );
     });
     return rows;
+}
+
+function addItemToCart(item) {
+    console.log(item.name);
 }
 
 export function toggleHidden(target) {
