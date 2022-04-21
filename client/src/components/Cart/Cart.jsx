@@ -12,6 +12,7 @@ const Cart = ({ cartItems, setCartItems }) => {
             <div className=" flex flex-row justify-between items-center bg-slate-200 m-4">
               <img className="w-28" src={obj.image} alt="" />
               <p>{obj.name}</p>
+              <p>{obj.quantity}</p>
               <div className="">{obj.price} kr</div>
             </div>
           ))}
