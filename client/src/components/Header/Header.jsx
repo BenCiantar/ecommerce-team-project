@@ -1,5 +1,6 @@
 import React from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { toggleHidden } from "../../scripts/tools";
 import { Cart } from "../index";
 
 const Header = (props) => {
@@ -13,11 +14,13 @@ const Header = (props) => {
         <div className=" flex items-center ">
           <AiOutlineShoppingCart
             className=" text-2xl "
-            onClick={props.onClickCart}
+            onClick={() => toggleHidden("cart")}
           />
+
           <h3 className=" text-base text-black px-2 ">menu</h3>
         </div>
       </div>
+      <Cart />
     </div>
   );
 };

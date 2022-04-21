@@ -2,7 +2,6 @@ import React from "react";
 import { Header } from "./components/index";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home, Adventures, Culture, BadURL404 } from "./pages/index";
-import { Cart } from "./components/index";
 import axios from "axios";
 
 function App() {
@@ -13,8 +12,6 @@ function App() {
       setCartItems(res.data);
     });
   }, []);
-
-  const [cartOpened, setCartOpened] = React.useState(false);
 
   return (
     <div>
