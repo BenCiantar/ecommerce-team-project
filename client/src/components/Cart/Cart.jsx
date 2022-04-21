@@ -14,6 +14,7 @@ const Cart = ({ cartItems, setCartItems }) => {
               <p>People: {obj.people}</p>
               <img src={obj.image} alt="" />
               <div className="price">Price: {obj.price} kr</div>
+              <div className="quantity">Quantity: {obj.quantity} st</div>
               <div className="description">{obj.description}</div>
             </div>
           ))}
