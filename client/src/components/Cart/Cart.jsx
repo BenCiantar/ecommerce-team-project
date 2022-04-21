@@ -4,7 +4,7 @@ const Cart = ({ cartItems, setCartItems }) => {
   const totalPrice = cartItems.reduce((sum, obj) => obj.price + sum, 0);
 
   return (
-    <div className="z-50 absolute bg-slate-300 hidden w-1/2 overflow-x-hidden top-12 overflow-y-auto h-96 right-0 min-w-400" id="cart">
+    <div className="z-50 absolute bg-slate-300 hidden w-full overflow-x-hidden top-12 overflow-y-auto h-full right-0 min-w-400" id="cart">
       <div className="overlay">
         <section className=" ">
           <h1>Your shopping cart</h1>

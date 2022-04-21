@@ -14,7 +14,7 @@ const Header = (props) => {
 }
 
     return (
-        <div className=" fixed w-full h-12 bg-white text-black border-b-2 border-black items-center flex flex-row justify-between ">
+        <div className="w-full h-12 bg-white text-black border-b-2 border-black items-center flex flex-row justify-between ">
             <div className=" brand-logo text-xl font-bold pl-2 ">
                 <h2>Logo</h2>
             </div>
@@ -41,7 +41,7 @@ const Header = (props) => {
 
 function MobileMenu(){
     return (
-        <div className=" fixed h-screen w-screen lg:hidden bg-black text-white top-8 ">
+        <div className="top-12 lg:hidden bg-black text-white">
             <ul className=" menu-list flex flex-col text-base font-bold ">
                     <li className="menu-list-item py-2 hover:bg-white hover:text-black ">Home</li>
                     <li className="menu-list-item py-2 hover:bg-white hover:text-black ">Adventures</li>
