@@ -2,7 +2,7 @@ import React from "react";
 import {
   placeOrder,
   addItemToCart,
-  // removeItemFromCart,
+  removeItemFromCart,
 } from "../../scripts/tools";
 
 const Cart = ({ cartItems, setCartItems }) => {
@@ -25,9 +25,9 @@ const Cart = ({ cartItems, setCartItems }) => {
               <p>{obj.name}</p>
               <div className="flex flex-row justify-between items-center">
                 <button
-                // onClick={() => {
-                //   removeItemFromCart(obj, cartItems, setCartItems);
-                // }}
+                  onClick={() => {
+                    removeItemFromCart(obj, cartItems, setCartItems);
+                  }}
                 >
                   -
                 </button>

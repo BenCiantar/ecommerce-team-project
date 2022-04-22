@@ -23,6 +23,21 @@ export function renderAllCategoryItems(items, cartItems, setCartItems) {
   return rows;
 }
 
+export function removeItemFromCart(item, cartItems, setCartItems) {
+  const newArray = [...cartItems];
+
+  for (let i = 0; i < newArray.length; i++) {
+    if (newArray[i].name === item.name) {
+      newArray[i].quantity--;
+    }
+    if (newArray[i].quantity === 0) {
+      newArray.splice(i, 1);
+    }
+  }
+
+  setCartItems(newArray);
+}
+
 export function addItemToCart(item, cartItems, setCartItems) {
   const newArray = [...cartItems];
   let itemExists = false;
@@ -30,7 +45,7 @@ export function addItemToCart(item, cartItems, setCartItems) {
   for (let product of newArray) {
     if (product.name === item.name) {
       itemExists = true;
-      product.quantity += 1;
+      product.quantity++;
     }
     console.log(item, "exist", product.quantity);
   }
