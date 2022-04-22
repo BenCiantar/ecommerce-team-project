@@ -8,8 +8,8 @@ function App() {
 
   return (
     <div>
-      <Header cartItems={ cartItems } setCartItems={ setCartItems } />
       <BrowserRouter>
+        <Header cartItems={ cartItems } setCartItems={ setCartItems } />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/adventures" element={<Adventures cartItems={ cartItems } setCartItems={ setCartItems } />} />
