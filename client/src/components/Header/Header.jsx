@@ -19,15 +19,15 @@ const Header = (props) => {
             <div className=" brand-logo text-xl font-bold pl-2 ">
                 <h2>Logo</h2>
             </div>
-            <div className=" cart-and-menu flex items-center lg:pr-4">
+            <div className="cart-and-menu flex items-center lg:pr-4">
                 <ul className=" hidden menu-list lg:flex lg:flex-row text-base font-bold pr-3">
-                    <NavLink to="/" className="navbar-item" >
+                    <NavLink to="/" className="" >
                       <li className="menu-list-item px-3 ">Home</li>
                     </NavLink>
-                    <NavLink to="/adventures" className="navbar-item">
+                    <NavLink to="/adventures" className="">
                       <li className="menu-list-item px-3 ">Adventures</li>
                     </NavLink>
-                    <NavLink to="/culture" className="navbar-item">
+                    <NavLink to="/culture" className="">
                       <li className="menu-list-item px-3 ">Culture</li>
                     </NavLink>  
                 </ul>
@@ -50,13 +50,13 @@ function MobileMenu(){
     return (
         <div className="top-12 absolute lg:hidden bg-black text-white z-10 right-0 overflow-x-hidden h-full w-full">
             <ul className=" menu-list flex flex-col text-base font-bold items-center">
-                    <NavLink to="/" className="navbar-item" >
+                    <NavLink to="/" className="" >
                     <li className="menu-list-item py-2 hover:bg-white hover:text-black ">Home</li>
                     </NavLink>
-                    <NavLink to="/adventures" className="navbar-item">
+                    <NavLink to="/adventures" className="">
                     <li className="menu-list-item py-2 hover:bg-white hover:text-black ">Adventures</li>
                     </NavLink>
-                    <NavLink to="/culture" className="navbar-item">
+                    <NavLink to="/culture" className="">
                     <li className="menu-list-item py-2 hover:bg-white hover:text-black ">Culture</li>
                     </NavLink>
                 </ul>
