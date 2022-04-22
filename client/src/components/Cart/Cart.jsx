@@ -1,5 +1,9 @@
 import React from "react";
-import { placeOrder } from "../../scripts/tools";
+import {
+  placeOrder,
+  addItemToCart,
+  removeItemFromCart,
+} from "../../scripts/tools";
 
 const Cart = ({ cartItems, setCartItems }) => {
   const totalPrice = cartItems.reduce(
@@ -19,7 +23,23 @@ const Cart = ({ cartItems, setCartItems }) => {
             <div className=" flex flex-row justify-between items-center bg-slate-200 m-4">
               <img className="w-28" src={obj.image} alt="" />
               <p>{obj.name}</p>
-              <p>{obj.quantity}</p>
+              <div className="flex flex-row justify-between items-center">
+                <button
+                  onClick={() => {
+                    removeItemFromCart(obj, cartItems, setCartItems);
+                  }}
+                >
+                  -
+                </button>
+                <p>{obj.quantity}</p>
+                <button
+                  onClick={() => {
+                    addItemToCart(obj, cartItems, setCartItems);
+                  }}
+                >
+                  +
+                </button>
+              </div>
               <div className="">{obj.price} kr</div>
             </div>
           ))}
