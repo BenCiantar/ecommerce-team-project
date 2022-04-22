@@ -18,18 +18,18 @@ const Header = (props) => {
             <div className=" brand-logo text-xl font-bold pl-2 ">
                 <h2>Logo</h2>
             </div>
-            <div className=" cart-and-menu flex items-center ">
+            <div className=" cart-and-menu flex items-center lg:pr-4">
+                <ul className=" hidden menu-list lg:flex lg:flex-row text-base font-bold pr-3">
+                    <li className="menu-list-item px-3 ">Home</li>
+                    <li className="menu-list-item px-3 ">Adventures</li>
+                    <li className="menu-list-item px-3 ">Culture</li>
+                </ul>
                 <AiOutlineShoppingCart
-                  className=" text-2xl "
+                  className=" w-10 h-10 pr-3 "
                   onClick={() => toggleHidden("cart")}
                 />
-                <ul className=" hidden menu-list lg:flex lg:flex-row text-base font-bold ">
-                    <li className="menu-list-item px-2 ">Home</li>
-                    <li className="menu-list-item px-2 ">Adventures</li>
-                    <li className="menu-list-item px-2 ">Culture</li>
-                </ul>
                 <button onClick={()=>{showMobileMenu()}}  className=" lg:hidden mobile-menu-button ">
-                    {(isMobileMenuOpen) ? <AiOutlineClose className=" w-8 h-8 pr-3 " alt="close"/> : <AiOutlineMenu className=" w-8 h-8 pr-3 " alt="menu"/>}
+                    {(isMobileMenuOpen) ? <AiOutlineClose className=" w-10 h-10 pr-3 " alt="close"/> : <AiOutlineMenu className=" w-10 h-10 pr-3 " alt="menu"/>}
                 </button>
                 {(isMobileMenuOpen) ? MobileMenu() : ''}
             </div>
