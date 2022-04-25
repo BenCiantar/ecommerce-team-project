@@ -40,7 +40,7 @@ const Cart = ({ cartItems, setCartItems }) => {
                   +
                 </button>
               </div>
-              <div className="">{obj.price} kr</div>
+              <div className="">{obj.price * obj.quantity} kr</div>
             </div>
           ))}
           <div className="">Total: {totalPrice} kr</div>
