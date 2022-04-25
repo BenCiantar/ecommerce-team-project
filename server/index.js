@@ -14,6 +14,7 @@ mongoClient.connect();
 const db = mongoClient.db("ecommerce-group");
 const itemsCollection = db.collection("items");
 const cartCollection = db.collection("cart");
+const orderCollection = db.collection("orders");
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -55,6 +56,10 @@ app.get("/items/:category", async (request, response) => {
   const category = request.params.category;
   const filteredItems = await itemsCollection.find({category: category}).toArray(); 
   response.json(filteredItems);
+});
+
+app.post("/users", async (request, response) => {
+
 });
 
 //Keep server running
