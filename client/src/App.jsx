@@ -1,7 +1,7 @@
 import React from "react";
 import { Header } from "./components/index";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home, Adventures, Culture, BadURL404 } from "./pages/index";
+import { Home, Adventures, Culture, Orders, BadURL404 } from "./pages/index";
 
 function App() {
   const [cartItems, setCartItems] = React.useState([]);
@@ -14,6 +14,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/adventures" element={<Adventures cartItems={ cartItems } setCartItems={ setCartItems } />} />
           <Route path="/culture" element={<Culture />} />
+          <Route path="/orders" element={<Orders />} />
           <Route path="*" element={<BadURL404 />} />
         </Routes>
       </BrowserRouter>
