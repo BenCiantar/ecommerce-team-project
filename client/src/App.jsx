@@ -1,7 +1,14 @@
 import React from 'react';
 import { Header } from './components/index';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Home, Adventures, Culture, BadURL404, Login } from './pages/index';
+import {
+  Home,
+  Adventures,
+  Culture,
+  BadURL404,
+  Login,
+  Register,
+} from './pages/index';
 
 function App() {
   const [cartItems, setCartItems] = React.useState([]);
@@ -21,6 +28,7 @@ function App() {
           />
           <Route path="/culture" element={<Culture />} />
           <Route path="*" element={<BadURL404 />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </BrowserRouter>
     </div>

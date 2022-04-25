@@ -3,3 +3,4 @@ export { default as Adventures } from './Adventures/Adventures';
 export { default as Culture } from './Culture/Culture';
 export { default as BadURL404 } from './BadURL404/BadURL404';
 export { default as Login } from './Login/Login';
+export { default as Register } from './Register/Register';
