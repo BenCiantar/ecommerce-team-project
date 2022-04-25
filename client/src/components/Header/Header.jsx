@@ -18,7 +18,7 @@ const Header = (props) => {
                 <h2>Logo</h2>
             </div>
             <div className="cart-and-menu flex items-center lg:pr-4">
-                <ul className=" hidden menu-list lg:flex lg:flex-row text-base font-bold pr-3">
+                <ul className=" id=linkList hidden menu-list lg:flex lg:flex-row text-base font-bold pr-3 " >
                     <NavLink to="/" className="" >
                       <li className="menu-list-item px-3 ">Home</li>
                     </NavLink>
@@ -47,14 +47,14 @@ const Header = (props) => {
 function MobileMenu(){
     return (
         <div className="top-12 absolute lg:hidden bg-black text-white z-10 right-0 overflow-x-hidden h-full w-full">
-            <ul className=" menu-list flex flex-col text-base font-bold items-center">
-                    <NavLink to="/" className="" >
-                    <li className="menu-list-item py-2 hover:bg-white hover:text-black ">Home</li>
+            <ul className=" menu-list flex flex-col text-base font-bold items-center" >
+                    <NavLink to="/" className="" onClick={() => toggleHidden()} >
+                    <li className="menu-list-item py-2 hover:bg-white hover:text-black " >Home</li>
                     </NavLink>
-                    <NavLink to="/adventures" className="">
+                    <NavLink to="/adventures" className="" onClick={() => toggleHidden()} >
                     <li className="menu-list-item py-2 hover:bg-white hover:text-black ">Adventures</li>
                     </NavLink>
-                    <NavLink to="/culture" className="">
+                    <NavLink to="/culture" className="" onClick={() => toggleHidden()} >
                     <li className="menu-list-item py-2 hover:bg-white hover:text-black ">Culture</li>
                     </NavLink>
                 </ul>
