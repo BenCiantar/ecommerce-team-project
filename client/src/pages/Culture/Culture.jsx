@@ -6,7 +6,7 @@ const Culture = () => {
   const [items, setItems] = useState([]);
   
   useEffect(() => {
-   rows = getItemsFromDb("Culture", setItems);
+    getItemsFromDb("Culture", setItems);
   }, []);
 
   let rows = renderAllCategoryItems(items);
