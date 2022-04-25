@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import { AiOutlineMenu } from "react-icons/ai";
-import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineShoppingCart, AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { toggleHidden } from "../../scripts/tools";
 import { Cart } from "../index";
 
