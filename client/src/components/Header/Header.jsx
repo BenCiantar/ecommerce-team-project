@@ -10,12 +10,13 @@ const Header = (props) => {
 
     const showMobileMenu = () => {
     (isMobileMenuOpen) ? setisMobileMenuOpen(false) : setisMobileMenuOpen(true)
+
 }
 
     return (
         <div className="w-full h-12 bg-white text-black border-b-2 border-black items-center flex flex-row justify-between ">
             <div className=" brand-logo text-xl font-bold pl-2 ">
-              <NavLink to="/" className="" >
+              <NavLink to="/" className="" onClick={() => setisMobileMenuOpen(false)} >
                 <h2>Logo</h2>
               </NavLink>
             </div>
@@ -47,21 +48,23 @@ const Header = (props) => {
 };
 
 function MobileMenu(){
+    
+
     return (
-        <div className="top-12 absolute lg:hidden bg-black text-white z-10 right-0 overflow-x-hidden h-full w-full">
+        <div id="NavMenu" className="top-12 absolute lg:hidden bg-black text-white z-10 right-0 overflow-x-hidden h-full w-full">
             <ul className=" menu-list flex flex-col text-base font-bold items-center" >
-                    <NavLink to="/" className="" onClick={() => toggleHidden()} >
+                    <NavLink to="/" className="" >
                     <li className="menu-list-item py-2 hover:bg-white hover:text-black " >Home</li>
                     </NavLink>
-                    <NavLink to="/adventures" className="" onClick={() => toggleHidden()} >
+                    <NavLink to="/adventures" className="" >
                     <li className="menu-list-item py-2 hover:bg-white hover:text-black ">Adventures</li>
                     </NavLink>
-                    <NavLink to="/culture" className="" onClick={() => toggleHidden()} >
+                    <NavLink to="/culture" className="" >
                     <li className="menu-list-item py-2 hover:bg-white hover:text-black ">Culture</li>
                     </NavLink>
                 </ul>
         </div>
     )
-}
+};
 
 export default Header;
