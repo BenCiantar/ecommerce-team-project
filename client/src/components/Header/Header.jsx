@@ -15,7 +15,9 @@ const Header = (props) => {
     return (
         <div className="w-full h-12 bg-white text-black border-b-2 border-black items-center flex flex-row justify-between ">
             <div className=" brand-logo text-xl font-bold pl-2 ">
+              <NavLink to="/" className="" >
                 <h2>Logo</h2>
+              </NavLink>
             </div>
             <div className="cart-and-menu flex items-center lg:pr-4">
                 <ul className=" id=linkList hidden menu-list lg:flex lg:flex-row text-base font-bold pr-3 " >
