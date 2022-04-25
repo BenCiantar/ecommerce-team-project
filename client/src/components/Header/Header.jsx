@@ -45,26 +45,28 @@ const Header = (props) => {
         </div>
     )
 
-};
-
-function MobileMenu(){
+    function MobileMenu(){
     
 
-    return (
-        <div id="NavMenu" className="top-12 absolute lg:hidden bg-black text-white z-10 right-0 overflow-x-hidden h-full w-full">
-            <ul className=" menu-list flex flex-col text-base font-bold items-center" >
-                    <NavLink to="/" className="" >
-                    <li className="menu-list-item py-2 hover:bg-white hover:text-black " >Home</li>
-                    </NavLink>
-                    <NavLink to="/adventures" className="" >
-                    <li className="menu-list-item py-2 hover:bg-white hover:text-black ">Adventures</li>
-                    </NavLink>
-                    <NavLink to="/culture" className="" >
-                    <li className="menu-list-item py-2 hover:bg-white hover:text-black ">Culture</li>
-                    </NavLink>
-                </ul>
-        </div>
-    )
+      return (
+          <div id="NavMenu" className="top-12 absolute lg:hidden bg-black text-white z-10 right-0 overflow-x-hidden h-full w-full">
+              <ul className=" menu-list flex flex-col text-base font-bold items-center" onClick={() => setisMobileMenuOpen(false)} >
+                      <NavLink to="/" className="" >
+                      <li className="menu-list-item py-2 hover:bg-white hover:text-black " >Home</li>
+                      </NavLink>
+                      <NavLink to="/adventures" className="" >
+                      <li className="menu-list-item py-2 hover:bg-white hover:text-black ">Adventures</li>
+                      </NavLink>
+                      <NavLink to="/culture" className="" >
+                      <li className="menu-list-item py-2 hover:bg-white hover:text-black ">Culture</li>
+                      </NavLink>
+                  </ul>
+          </div>
+      )
+  };
+
 };
+
+
 
 export default Header;
