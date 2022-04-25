@@ -6,7 +6,7 @@ const Adventures = ({ cartItems, setCartItems }) => {
   const [items, setItems] = useState([]);
   
   useEffect(() => {
-    rows = getItemsFromDb("Adventure", setItems);
+    getItemsFromDb("Adventure", setItems);
   }, []);
 
   let rows = renderAllCategoryItems(items, cartItems, setCartItems);
