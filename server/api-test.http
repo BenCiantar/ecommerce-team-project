@@ -6,7 +6,3 @@ Content-Type: application/json
 POST http://localhost:8080/users
 Content-Type: application/json
 
-{
-    "_id": "hello@me.se",
-    "password": "12345"
-}
