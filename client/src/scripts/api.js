@@ -19,18 +19,19 @@ export function getItemsFromDb(category, setItems) {
 
 export function placeOrder(cartItems, setCartItems) {
   
-    fetch(`${config.API_BASE_URL}/orders`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(usersCart),
-        })
-        .then((response) => {
-            if (!response.ok){
-                throw new Error(response.statusText);
-            } else {
-                return response;
-            }
-        })
+    fetch(`${config.API_BASE_URL}/place-order`, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(cartItems),
+    })
+    .then((response) => {
+        if (!response.ok){
+            throw new Error(response.statusText);
+        } else {
+            setCartItems([]);
+            return response;
+        }
+    })
 }
