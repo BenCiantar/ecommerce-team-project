@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AiOutlineShoppingCart, AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { AiOutlineArrowUp } from "react-icons/ai";
 
 
 const Sort = () => {
@@ -8,7 +8,10 @@ const Sort = () => {
     
 
     return (
-        <p>sort</p>
+        <section className=" flex w-3/4 self-center items-end border-black border-2 h-6 ">
+            <p className=" font-bold ">Sort by:</p>
+            <button>Price <AiOutlineArrowUp className=" w-8 h-8 " /> </button>
+        </section>
     )
 
 };
