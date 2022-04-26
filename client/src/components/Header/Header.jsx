@@ -46,7 +46,7 @@ const Header = (props) => {
 
     function MobileMenu(){
       return (
-          <div id="NavMenu" className="top-12 absolute lg:hidden bg-black text-white z-10 right-0 overflow-x-hidden h-full w-full">
+          <nav className="top-12 absolute lg:hidden bg-black text-white z-10 right-0 overflow-x-hidden h-full w-full">
               <ul className=" menu-list flex flex-col text-base font-bold items-center" onClick={() => setisMobileMenuOpen(false)} >
                       <NavLink to="/" className="" >
                       <li className="menu-list-item py-2 hover:bg-white hover:text-black " >Home</li>
@@ -58,7 +58,7 @@ const Header = (props) => {
                       <li className="menu-list-item py-2 hover:bg-white hover:text-black ">Culture</li>
                       </NavLink>
                   </ul>
-          </div>
+          </nav>
       )
   };
 
