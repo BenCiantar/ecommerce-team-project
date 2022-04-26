@@ -1,5 +1,5 @@
-import React from "react";
-import axios from "axios";
+import React from 'react';
+import axios from 'axios';
 
 const Register = () => {
   function handleSubmit(e) {
@@ -9,7 +9,9 @@ const Register = () => {
       _id: e.target[0].value,
       password: e.target[1].value,
     };
-    axios.post("http://localhost:8080/users", newUser);
+    axios.post('http://localhost:8080/users', newUser).then((response) => {
+      console.log(response).catch(console.log('error'));
+    });
   }
   return (
     <div>
