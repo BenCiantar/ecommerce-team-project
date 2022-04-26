@@ -11,9 +11,10 @@ const MONGODB_URL =
 const mongoClient = new mongodb.MongoClient(MONGODB_URL);
 mongoClient.connect();
 
-const db = mongoClient.db('ecommerce-group');
-const itemsCollection = db.collection('items');
-const cartCollection = db.collection('cart');
+const db = mongoClient.db("ecommerce-group");
+const itemsCollection = db.collection("items");
+const cartCollection = db.collection("cart");
+const orderCollection = db.collection("orders");
 const usersCollection = db.collection('users');
 
 const PORT = process.env.PORT || 8080;
@@ -58,6 +59,14 @@ app.get('/items/:category', async (request, response) => {
     .toArray();
   response.json(filteredItems);
 });
+
+app.post("/place-order", async (request, response) => {
+  const newOrder = request.body;
+  console.log(request.body)
+
+  await orderCollection.insertOne(newOrder);
+
+  response.status(200).end()
 
 // Register a user -- POST
 app.post('/users', async (request, response) => {
