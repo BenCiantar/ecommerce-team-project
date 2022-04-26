@@ -1,26 +1,26 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import { AiOutlineMenu } from "react-icons/ai";
-import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineShoppingCart, AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { toggleHidden } from "../../scripts/tools";
 import { Cart } from "../index";
 
 const Header = (props) => {
 
-    const [isMobileMenuOpen, setisMobileMenuOpen] = useState(false)
+    const [isMobileMenuOpen, setisMobileMenuOpen] = useState(false);
 
     const showMobileMenu = () => {
-    (isMobileMenuOpen) ? setisMobileMenuOpen(false) : setisMobileMenuOpen(true)
-}
+        (isMobileMenuOpen) ? setisMobileMenuOpen(false) : setisMobileMenuOpen(true);
+    }
 
     return (
-        <div className="w-full h-12 bg-white text-black border-b-2 border-black items-center flex flex-row justify-between ">
+        <nav className="w-full h-12 bg-white text-black border-b-2 border-black items-center flex flex-row justify-between ">
             <div className=" brand-logo text-xl font-bold pl-2 ">
+              <NavLink to="/" className="" onClick={() => setisMobileMenuOpen(false)} >
                 <h2>Logo</h2>
+              </NavLink>
             </div>
             <div className="cart-and-menu flex items-center lg:pr-4">
-                <ul className=" hidden menu-list lg:flex lg:flex-row text-base font-bold pr-3">
+                <ul className="hidden menu-list lg:flex lg:flex-row text-base font-bold pr-3 " >
                     <NavLink to="/" className="" >
                       <li className="menu-list-item px-3 ">Home</li>
                     </NavLink>
@@ -41,27 +41,29 @@ const Header = (props) => {
                 {(isMobileMenuOpen) ? MobileMenu() : ''}
             </div>
             <Cart {...props} />
-        </div>
+        </nav>
     )
+
+    function MobileMenu(){
+      return (
+          <nav className="top-12 absolute lg:hidden bg-black text-white z-10 right-0 overflow-x-hidden h-full w-full">
+              <ul className=" menu-list flex flex-col text-base font-bold items-center" onClick={() => setisMobileMenuOpen(false)} >
+                      <NavLink to="/" className="" >
+                      <li className="menu-list-item py-2 hover:bg-white hover:text-black " >Home</li>
+                      </NavLink>
+                      <NavLink to="/adventures" className="" >
+                      <li className="menu-list-item py-2 hover:bg-white hover:text-black ">Adventures</li>
+                      </NavLink>
+                      <NavLink to="/culture" className="" >
+                      <li className="menu-list-item py-2 hover:bg-white hover:text-black ">Culture</li>
+                      </NavLink>
+                  </ul>
+          </nav>
+      )
+  };
 
 };
 
-function MobileMenu(){
-    return (
-        <div className="top-12 absolute lg:hidden bg-black text-white z-10 right-0 overflow-x-hidden h-full w-full">
-            <ul className=" menu-list flex flex-col text-base font-bold items-center">
-                    <NavLink to="/" className="" >
-                    <li className="menu-list-item py-2 hover:bg-white hover:text-black ">Home</li>
-                    </NavLink>
-                    <NavLink to="/adventures" className="">
-                    <li className="menu-list-item py-2 hover:bg-white hover:text-black ">Adventures</li>
-                    </NavLink>
-                    <NavLink to="/culture" className="">
-                    <li className="menu-list-item py-2 hover:bg-white hover:text-black ">Culture</li>
-                    </NavLink>
-                </ul>
-        </div>
-    )
-}
+
 
 export default Header;
