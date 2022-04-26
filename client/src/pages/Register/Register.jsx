@@ -5,11 +5,11 @@ const Register = () => {
   function handleSubmit(e) {
     e.preventDefault();
 
-    let obj = {
+    let newUser = {
       _id: e.target[0].value,
       password: e.target[1].value,
     };
-    axios.post("http://localhost:8080/users", obj);
+    axios.post("http://localhost:8080/users", newUser);
   }
   return (
     <div>
