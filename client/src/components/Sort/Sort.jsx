@@ -12,12 +12,6 @@ const Sort = ({items, setItems}) => {
     }
 
     return (
-       /* <section className=" flex w-3/4 self-center items-end border-black border-2 h-8 ">
-            <p className=" font-bold ">Sort by:</p>
-            <button className=" flex border-black border-2 mx-1 ">Price <AiOutlineArrowUp className=" w-5 h-5 "  /> </button>
-        </section>
-        */
-
 <div>
     <select name="sort-menu" id="sort-menu" onChange={handleChange}>
         <option value="default" defaultValue>Sort items</option>
