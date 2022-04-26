@@ -26,7 +26,7 @@ export function placeOrder(cartItems, setCartItems, totalPrice) {
         "timestamp": new Date()
     }
   
-    fetch(`${config.API_BASE_URL}/place-order`, {
+    fetch(`${API_BASE_URL}/place-order`, {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
