@@ -11,7 +11,7 @@ const Adventures = ({ cartItems, setCartItems }) => {
 
   let rows = renderAllCategoryItems(items, cartItems, setCartItems);
   return (
-    <div className="grid grid-cols-1 gap-5">
+    <div className="bg-slate-500 grid grid-cols-1 gap-5 p-5 md:grid-cols-2 lg:grid-cols-3">
       {rows}
     </div>
   );

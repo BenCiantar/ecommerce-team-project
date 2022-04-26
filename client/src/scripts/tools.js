@@ -1,21 +1,18 @@
 import { FaShoppingCart, FaDollarSign } from "react-icons/fa";
+import { getItemsFromDb } from "./api";
 
 export function renderAllCategoryItems(items, cartItems, setCartItems) {
   let rows = [];
   items.forEach((item) => {
     rows.push(
-      <div>
-        <h1>{item.name}</h1>
-        <p>
-          <FaDollarSign />
-          {item.price}
-        </p>
-        <p>{item.description}</p>
+      <div className=" bg-gray-300 w-full h-96 p-3 flex flex-col justify-start items-center">
+        <img src={item.image} alt={item.alt} className="w-full h-2/3 object-cover mb-2 " />
+        <h1 className="mb-2 ">{item.name}</h1>
         <button
-          className="buy-btn btn-in-stock"
+          className="bg-green-600 text-white w-1/4 min-w-fit flex flex-row justify-center items-center p-1 rounded-md shadow-md"
           onClick={() => addItemToCart(item, cartItems, setCartItems)}
         >
-          <FaShoppingCart /> {item.price} kr
+          <FaShoppingCart /> <p className="ml-2">{item.price} kr</p>
         </button>
       </div>
     );
