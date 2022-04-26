@@ -36,6 +36,14 @@ export function sortItems(items, sortMethod) {
       sortedItems.sort((a, b) => (a.price < b.price ? 1 : -1))
       return sortedItems;
     }
+    else if (sortMethod === "Alpha-a-z") {
+      sortedItems.sort((a, b) => (a.name > b.name ? 1 : -1))
+      return sortedItems;
+    }
+    else if (sortMethod === "Alpha-z-a") {
+      sortedItems.sort((a, b) => (a.name < b.name ? 1 : -1))
+      return sortedItems;
+    }
 
 }
 
