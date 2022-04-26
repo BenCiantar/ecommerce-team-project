@@ -10,22 +10,6 @@ const Register = () => {
       password: e.target[1].value,
     };
     axios.post("http://localhost:8080/users", obj);
-
-    //     method: 'POST',
-    //     headers: {
-    //         'Accept': 'application/json',
-    //         'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({ // We should keep the fields consistent for managing this data later
-    //         email: name,
-    //         clockedIn:false,
-    //         dates:[]
-    //     })
-    // })
-    // .then(()=>{
-    //     // Once posted, the user will be notified
-    //     alert('You have been added to the system!');
-    // })
   }
   return (
     <div>
