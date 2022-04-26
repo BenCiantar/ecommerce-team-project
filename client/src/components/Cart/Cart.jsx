@@ -46,7 +46,7 @@ const Cart = ({ cartItems, setCartItems }) => {
           <div className="">Total: {totalPrice} kr</div>
           <button
             className="bg-green-500 text-white p-2 rounded-md shadow-md"
-            onClick={() => placeOrder(totalPrice)}
+            onClick={() => placeOrder(cartItems, setCartItems)}
           >
             Place Order
           </button>

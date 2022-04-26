@@ -17,11 +17,8 @@ export function getItemsFromDb(category, setItems) {
     });
 }
 
-export function placeOrder() {
-    
-    const usersCart = 
-
-
+export function placeOrder(cartItems, setCartItems) {
+  
     fetch(`${config.API_BASE_URL}/orders`, {
         method: 'POST',
         headers: {
@@ -36,4 +33,4 @@ export function placeOrder() {
                 return response;
             }
         })
-  }
+}
