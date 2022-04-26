@@ -22,17 +22,17 @@ const Register = () => {
             type="email"
             required
             id="email"
-            placeholder="Your email"
+            placeholder="Enter an email"
           />
         </label>
         <label htmlFor="password">
           Password:
           <input
             className="border-solid border-2 border-slate-600"
-            type="pasword"
+            type="password"
             required
             id="password"
-            placeholder="Your password"
+            placeholder="Enter a password"
           />
         </label>
         <button type="submit">Register</button>
