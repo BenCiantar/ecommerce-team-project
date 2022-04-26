@@ -16,3 +16,7 @@ export function getItemsFromDb(category, setItems) {
         console.error(err);
     });
 }
+
+export function placeOrder(totalPrice) {
+    alert(`Order placed! Total price: ${totalPrice} kr`);
+  }

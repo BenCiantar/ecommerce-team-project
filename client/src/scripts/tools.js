@@ -64,10 +64,6 @@ export function addItemToCart(item, cartItems, setCartItems) {
   console.log(cartItems);
 }
 
-export function placeOrder(totalPrice) {
-  alert(`Order placed! Total price: ${totalPrice} kr`);
-}
-
 export function toggleHidden(target) {
   document.getElementById(target).classList.toggle("hidden");
 }
