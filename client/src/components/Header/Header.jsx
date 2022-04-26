@@ -6,12 +6,11 @@ import { Cart } from "../index";
 
 const Header = (props) => {
 
-    const [isMobileMenuOpen, setisMobileMenuOpen] = useState(false)
+    const [isMobileMenuOpen, setisMobileMenuOpen] = useState(false);
 
     const showMobileMenu = () => {
-    (isMobileMenuOpen) ? setisMobileMenuOpen(false) : setisMobileMenuOpen(true)
-
-}
+        (isMobileMenuOpen) ? setisMobileMenuOpen(false) : setisMobileMenuOpen(true);
+    }
 
     return (
         <div className="w-full h-12 bg-white text-black border-b-2 border-black items-center flex flex-row justify-between ">
@@ -21,7 +20,7 @@ const Header = (props) => {
               </NavLink>
             </div>
             <div className="cart-and-menu flex items-center lg:pr-4">
-                <ul className=" id=linkList hidden menu-list lg:flex lg:flex-row text-base font-bold pr-3 " >
+                <ul className="hidden menu-list lg:flex lg:flex-row text-base font-bold pr-3 " >
                     <NavLink to="/" className="" >
                       <li className="menu-list-item px-3 ">Home</li>
                     </NavLink>
@@ -46,8 +45,6 @@ const Header = (props) => {
     )
 
     function MobileMenu(){
-    
-
       return (
           <div id="NavMenu" className="top-12 absolute lg:hidden bg-black text-white z-10 right-0 overflow-x-hidden h-full w-full">
               <ul className=" menu-list flex flex-col text-base font-bold items-center" onClick={() => setisMobileMenuOpen(false)} >
