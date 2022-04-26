@@ -17,6 +17,23 @@ export function getItemsFromDb(category, setItems) {
     });
 }
 
-export function placeOrder(totalPrice) {
-    alert(`Order placed! Total price: ${totalPrice} kr`);
+export function placeOrder() {
+    
+    const usersCart = 
+
+
+    fetch(`${config.API_BASE_URL}/orders`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(usersCart),
+        })
+        .then((response) => {
+            if (!response.ok){
+                throw new Error(response.statusText);
+            } else {
+                return response;
+            }
+        })
   }
