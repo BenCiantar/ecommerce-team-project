@@ -23,6 +23,22 @@ export function renderAllCategoryItems(items, cartItems, setCartItems) {
   return rows;
 }
 
+export function sortItems(items, sortMethod) {
+  const sortedItems = [...items];
+    if (sortMethod === "default") {
+      return sortedItems;
+    }
+    else if (sortMethod === "Price-low-high") {
+      sortedItems.sort((a, b) => (a.price > b.price ? 1 : -1))
+      return sortedItems;
+    }
+    else if (sortMethod === "Price-high-low") {
+      sortedItems.sort((a, b) => (a.price < b.price ? 1 : -1))
+      return sortedItems;
+    }
+
+}
+
 export function removeItemFromCart(item, cartItems, setCartItems) {
   const newArray = [...cartItems];
 
