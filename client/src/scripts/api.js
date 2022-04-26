@@ -17,20 +17,27 @@ export function getItemsFromDb(category, setItems) {
     });
 }
 
-export function placeOrder(cartItems, setCartItems) {
+export function placeOrder(cartItems, setCartItems, totalPrice) {
+
+    const newOrderDetails = {
+        "cart": cartItems,
+        "total": totalPrice,
+        "timestamp": new Date()
+    }
   
     fetch(`${config.API_BASE_URL}/place-order`, {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
     },
-    body: JSON.stringify(cartItems),
+    body: JSON.stringify(newOrderDetails),
     })
     .then((response) => {
         if (!response.ok){
             throw new Error(response.statusText);
         } else {
             setCartItems([]);
+            alert("Your order has been sent!");
             return response;
         }
     })
