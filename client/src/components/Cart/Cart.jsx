@@ -1,9 +1,9 @@
 import React from "react";
 import {
-  placeOrder,
   addItemToCart,
   removeItemFromCart,
 } from "../../scripts/tools";
+import { placeOrder } from "../../scripts/api";
 
 const Cart = ({ cartItems, setCartItems }) => {
   const totalPrice = cartItems.reduce(
@@ -46,7 +46,7 @@ const Cart = ({ cartItems, setCartItems }) => {
           <div className="">Total: {totalPrice} kr</div>
           <button
             className="bg-green-500 text-white p-2 rounded-md shadow-md"
-            onClick={() => placeOrder(totalPrice)}
+            onClick={() => placeOrder(cartItems, setCartItems, totalPrice)}
           >
             Place Order
           </button>
