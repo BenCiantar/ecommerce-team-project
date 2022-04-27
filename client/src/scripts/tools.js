@@ -11,7 +11,7 @@ export function renderAllCategoryItems(items, cartItems, setCartItems) {
           <p className="mb-3">{item.company}</p>
         </div>
         <button
-            className="bg-green-600 text-white w-1/4 min-w-fit flex flex-row justify-center items-center p-1 rounded-md shadow-md"
+            className="bg-green-500 text-white w-1/4 min-w-fit flex flex-row justify-center items-center p-1 rounded-md shadow-md"
             onClick={() => addItemToCart(item, cartItems, setCartItems)}
           >
             <FaShoppingCart /> <p className="ml-2">{item.price} kr</p>
