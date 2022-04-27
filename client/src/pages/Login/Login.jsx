@@ -5,11 +5,10 @@ import { Link } from "react-router-dom";
 const Login = () => {
   function loginUser(e) {
     e.preventDefault();
-    let users = [];
     axios.get("http://localhost:8080/users").then((res) => {
       console.log(res);
-      users.push(res.data);
-      console.log(users);
+      const users = [...res.data];
+      console.log(users[0]);
     });
   }
   return (
