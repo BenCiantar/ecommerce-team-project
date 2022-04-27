@@ -20,6 +20,7 @@ const Register = () => {
       //if server is not reachible
       .catch((e) => {
         console.log(e.message);
+        alert("Error:" e.message);
       });
   }
   return (
