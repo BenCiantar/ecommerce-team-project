@@ -3,13 +3,24 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+  const [userExists, setUserExists] = React.useState(false);
   function loginUser(e) {
     e.preventDefault();
     axios.get("http://localhost:8080/users").then((res) => {
-      console.log(res);
       const data = res.data;
-      const users = [...data];
-      console.log(users[0]);
+      let id = e.target[0].value;
+      let password = e.target[1].value;
+      for (let x in data) {
+        if (data[x]._id === id && data[x].password === password) {
+          setUserExists(true);
+          alert("logged in");
+        } else if (data[x]._id === id && data[x].password !== password) {
+          alert("incorrect password");
+        } else {
+          alert("incorrect email");
+        }
+        break;
+      }
     });
   }
   return (
