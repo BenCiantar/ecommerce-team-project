@@ -23,14 +23,13 @@ export function renderAllCategoryItems(items, cartItems, setCartItems) {
   return rows;
 }
 
-export function renderOrderItems() {
+export function renderOrderItems(orders) {
   let rows = [];
-  items.forEach((item) => {
+  orders.forEach((order) => {
     rows.push(
       <div>
-        <h1>{item.name}</h1>
-        <p>{item.description}</p>
-        <p>{item.price} kr</p>
+        <h1>{order.timestamp}</h1>
+        <p>{order.total}</p>
       </div>
     );
   });

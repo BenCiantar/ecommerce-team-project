@@ -1,9 +1,10 @@
 import React from "react";
 import {
-  placeOrder,
   addItemToCart,
   removeItemFromCart,
 } from "../../scripts/tools";
+import { placeOrder } from "../../scripts/api";
+
 
 const Cart = ({ cartItems, setCartItems }) => {
   const totalPrice = cartItems.reduce(

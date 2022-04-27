@@ -3,19 +3,18 @@ import { useEffect, useState } from "react";
 import { renderOrderItems } from "../../scripts/tools";
 import { Sort } from "../../components";
 
-const Orders = ({ ordersItems }) => {
+const Orders = () => {
   const [orders, setOrders] = useState([]);
   
   useEffect(() => {
     getOrdersFromDb(setOrders);
   }, []);
 
-  let rows = renderOrderItems();
-  console.log(orders)
+  let rows = renderOrderItems(orders);
 
   return (
     <div> 
-      <Sort orders={items} setOrders={setOrders} />
+      <Sort orders={orders} setOrders={setOrders} />
       {rows}
     </div>
   );
