@@ -1,10 +1,20 @@
 import React from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+  function loginUser(e) {
+    e.preventDefault();
+    let users = [];
+    axios.get("http://localhost:8080/users").then((res) => {
+      console.log(res);
+      users.push(res.data);
+      console.log(users);
+    });
+  }
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={loginUser}>
         <h1>Log in</h1>
         <label htmlFor="email">
           Email:
