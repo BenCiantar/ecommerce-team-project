@@ -26,7 +26,7 @@ function App() {
           />
           <Route path="/culture" element={<Culture />} />
           <Route path="*" element={<BadURL404 />} />
-          <Route path="/product" element={<ProductInfo />} />
+          <Route path="/product/:id" element={<ProductInfo cartItems={cartItems} setCartItems={setCartItems} />} />
         </Routes>
       </BrowserRouter>
     </div>

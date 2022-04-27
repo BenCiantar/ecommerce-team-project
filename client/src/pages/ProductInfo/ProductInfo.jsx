@@ -1,8 +1,18 @@
-import { findItem } from "../../scripts/tools";
-import { useState } from "react";
-//import { useLocation } from "react-router";
+import { findItemInDbById } from "../../scripts/api";
+import { renderItemDetailsPage } from "../../scripts/tools";
+import { useState, useEffect } from "react";
 
-const ProductInfo = () => {
+const ProductInfo = (cartItems, setCartItems) => {
+  const [selectedItem, setSelectedItem] = useState([]);
+
+  const id = window.location.pathname.replace("/product/", "");
+
+  useEffect(() => {
+    findItemInDbById(id, setSelectedItem);
+  });
+
+  let rows = renderItemDetailsPage(selectedItem, cartItems, setCartItems);
+
   return (
     <main>
       <div className=" flex items-center p-5 bg-orange-400 justify-center">
@@ -29,6 +39,8 @@ const ProductInfo = () => {
           </div>
         </div>
       </div>
+
+      {rows}
     </main>
   );
 };

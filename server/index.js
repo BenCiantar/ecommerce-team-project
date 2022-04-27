@@ -59,6 +59,14 @@ app.get("/items/:category", async (request, response) => {
   response.json(filteredItems);
 });
 //Get single item that matches Id
+app.get("/item-by-id/:id", async (request, response) => {
+  const id = ObjectId(`"${request.params.id}"`)
+  console.log(id)
+  const filteredItems = await itemsCollection
+    .find({ _id: id })
+    .toArray();
+  response.json(filteredItems);
+});
 
 //Keep server running
 app.listen(PORT, () => {
