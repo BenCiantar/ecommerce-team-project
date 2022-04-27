@@ -1,5 +1,4 @@
-import { FaShoppingCart, FaDollarSign } from "react-icons/fa";
-import { getItemsFromDb } from "./api";
+import { FaShoppingCart } from "react-icons/fa";
 
 export function renderAllCategoryItems(items, cartItems, setCartItems) {
   let rows = [];
