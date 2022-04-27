@@ -4,17 +4,13 @@ import { renderAllCategoryItems } from "../../scripts/tools";
 
 const Culture = () => {
   const [items, setItems] = useState([]);
-  
+
   useEffect(() => {
-   rows = getItemsFromDb("Culture", setItems);
+    rows = getItemsFromDb("Culture", setItems);
   }, []);
 
   let rows = renderAllCategoryItems(items);
-  
-  return (
-    <div>
-      {rows}
-    </div>
-   );
+
+  return <div>{rows}</div>;
 };
 export default Culture;

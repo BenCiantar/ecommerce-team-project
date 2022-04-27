@@ -37,11 +37,11 @@ app.use(requestLogger);
 app.use(express.json());
 app.use(cors({ origin: "http://localhost:3000" }));
 
+//get item collection
 app.get("/items", async (request, response) => {
   const products = await itemsCollection.find({}).toArray();
   response.json(products);
 });
-
 
 app.get("/cart", async (request, response) => {
   const cartItems = await cartCollection.find({}).toArray();
@@ -53,9 +53,12 @@ app.get("/cart", async (request, response) => {
 //Get all items from the db that match the category
 app.get("/items/:category", async (request, response) => {
   const category = request.params.category;
-  const filteredItems = await itemsCollection.find({category: category}).toArray(); 
+  const filteredItems = await itemsCollection
+    .find({ category: category })
+    .toArray();
   response.json(filteredItems);
 });
+//Get single item that matches Id
 
 //Keep server running
 app.listen(PORT, () => {
