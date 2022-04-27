@@ -1,5 +1,5 @@
-import React from 'react';
-import axios from 'axios';
+import React from "react";
+import axios from "axios";
 
 const Register = () => {
   function handleSubmit(e) {
@@ -9,9 +9,18 @@ const Register = () => {
       _id: e.target[0].value,
       password: e.target[1].value,
     };
-    axios.post('http://localhost:8080/users', newUser).then((response) => {
-      console.log(response).catch(console.log('error'));
-    });
+    axios
+      .post("http://localhost:8080/users", newUser)
+      .then((res) => {
+        //if server is reachible but the response doesn't contain data
+        if (!res.ok) {
+          throw Error("couldn't fetch");
+        }
+      })
+      //if server is not reachible
+      .catch((e) => {
+        console.log(e.message);
+      });
   }
   return (
     <div>
