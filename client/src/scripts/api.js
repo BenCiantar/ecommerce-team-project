@@ -18,6 +18,23 @@ export function getItemsFromDb(category, setItems) {
     });
 }
 
+export function getOrdersFromDb(setOrders) {
+    fetch(`${API_BASE_URL}/orders`, {
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((result) => {
+        setOrders(result);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
 export function placeOrder(cartItems, setCartItems, totalPrice) {
   const newOrderDetails = {
     cart: cartItems,

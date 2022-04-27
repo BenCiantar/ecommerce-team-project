@@ -49,6 +49,11 @@ app.get('/cart', async (request, response) => {
   response.json(cartItems);
 });
 
+app.get('/orders', async (request, response) => {
+  const ordersItems = await orderCollection.find({}).toArray();
+  response.json(ordersItems);
+});
+
 // Keep server running
 
 //Get all items from the db that match the category

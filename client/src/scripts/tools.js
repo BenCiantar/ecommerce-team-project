@@ -23,6 +23,20 @@ export function renderAllCategoryItems(items, cartItems, setCartItems) {
   return rows;
 }
 
+export function renderOrderItems() {
+  let rows = [];
+  items.forEach((item) => {
+    rows.push(
+      <div>
+        <h1>{item.name}</h1>
+        <p>{item.description}</p>
+        <p>{item.price} kr</p>
+      </div>
+    );
+  });
+  return rows;
+}
+
 export function sortItems(items, sortMethod) {
   const sortedItems = [...items];
     if (sortMethod === "default") {
