@@ -1,11 +1,10 @@
-import { FaTools } from 'react-icons/fa';
-import { API_BASE_URL } from '../config';
-
+import { FaTools } from "react-icons/fa";
+import { API_BASE_URL } from "../config";
 
 export function getItemsFromDb(category, setItems) {
   fetch(`${API_BASE_URL}/items/${category}`, {
     headers: {
-      'content-type': 'application/json',
+      "content-type": "application/json",
     },
   })
     .then((response) => {
@@ -26,16 +25,10 @@ export function placeOrder(cartItems, setCartItems, totalPrice) {
     timestamp: new Date(),
   };
 
-    const newOrderDetails = {
-        "cart": cartItems,
-        "total": totalPrice,
-        "timestamp": new Date()
-    }
-  
-    fetch(`${API_BASE_URL}/place-order`, {
-    method: 'POST',
+  fetch(`${API_BASE_URL}/place-order`, {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(newOrderDetails),
   }).then((response) => {
@@ -43,7 +36,7 @@ export function placeOrder(cartItems, setCartItems, totalPrice) {
       throw new Error(response.statusText);
     } else {
       setCartItems([]);
-      alert('Your order has been sent!');
+      alert("Your order has been sent!");
       return response;
     }
   });

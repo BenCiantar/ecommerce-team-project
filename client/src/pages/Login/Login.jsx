@@ -1,28 +1,32 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
     <div>
-      <form>
-        <h1>Sign In</h1>
-        <label>
+      <form onSubmit={handleSubmit}>
+        <h1>Log in</h1>
+        <label htmlFor="email">
           Email:
           <input
             className="border-solid border-2 border-slate-600"
-            type="text"
+            type="email"
             required
+            id="email"
+            placeholder="Enter your email"
           />
         </label>
-        <label>
+        <label htmlFor="password">
           Password:
           <input
             className="border-solid border-2 border-slate-600"
-            type="text"
+            type="password"
             required
+            id="password"
+            placeholder="Enter a password"
           />
         </label>
-        <button>LOG IN</button>
+        <button type="submit">LOG IN</button>
         <Link to="/register">I don't have an account</Link>
       </form>
     </div>

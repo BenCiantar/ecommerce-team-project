@@ -26,7 +26,7 @@ const Register = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h1>Sign In</h1>
+        <h1>Register an account</h1>
         <label htmlFor="email">
           Email:
           <input
