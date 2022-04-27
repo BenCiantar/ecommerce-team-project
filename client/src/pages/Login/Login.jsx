@@ -10,16 +10,21 @@ const Login = () => {
       const data = res.data;
       let id = e.target[0].value;
       let password = e.target[1].value;
-      for (let x in data) {
-        if (data[x]._id === id && data[x].password === password) {
+      console.log(data);
+      console.log(data);
+      for (let x of data) {
+        console.log(x);
+        // console.log(data[x]);
+        if (x._id === id && x.password === password) {
+          alert("Logged in");
           setUserExists(true);
-          alert("logged in");
-        } else if (data[x]._id === id && data[x].password !== password) {
-          alert("incorrect password");
-        } else {
+          break;
+        } else if (x._id !== id) {
           alert("incorrect email");
+        } else {
+          alert("incorrect password");
+          break;
         }
-        break;
       }
     });
   }
