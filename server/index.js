@@ -67,6 +67,7 @@ app.post("/place-order", async (request, response) => {
   await orderCollection.insertOne(newOrder);
 
   response.status(200).end()
+});
 
 // Register a user -- POST
 app.post('/users', async (request, response) => {
