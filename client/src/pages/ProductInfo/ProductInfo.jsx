@@ -8,15 +8,15 @@ const ProductInfo = () => {
       <div className=" flex items-center p-5 bg-orange-400 justify-center">
         <h1 className=" font-medium">wale watching</h1>
       </div>
-      <div className=" p-2 flex flex-col ">
-        <div className=" ">
+      <div className=" p-2  flex flex-col bg-lime-400 h-full w-full  ">
+        <div className=" h-1/4">
           <img
-            className="w-full rounded-sm"
-            src="https://images.unsplash.com/photo-1550524514-efb9046e0fec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=653&q=80"
+            className=" w-full rounded-sm object-cover bg-amber-800"
+            //src="https://images.unsplash.com/photo-1550524514-efb9046e0fec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=653&q=80"
             alt="Ballet dancer on a street"
           />
         </div>
-        <div className=" flex-1   px-12">
+        <div className="  flex flex-col justify-center items-center bg-amber-300">
           <h1 className=" font-medium">wale watching</h1>
           <p className=" my-5">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium
