@@ -5,8 +5,11 @@ import { useState } from "react";
 const ProductInfo = () => {
   return (
     <main>
-      <div className=" p-14 flex  ">
-        <div className="flex-1 ">
+      <div className=" flex items-center p-5 bg-orange-400 justify-center">
+        <h1 className=" font-medium">wale watching</h1>
+      </div>
+      <div className=" p-2 flex flex-col ">
+        <div className=" ">
           <img
             className="w-full rounded-sm"
             src="https://images.unsplash.com/photo-1550524514-efb9046e0fec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=653&q=80"
