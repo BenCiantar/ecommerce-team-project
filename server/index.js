@@ -68,6 +68,7 @@ app.post('/place-order', async (request, response) => {
 
   response.status(200).end();
 });
+
 // Register a user -- POST
 app.post('/users', async (request, response) => {
   const newUser = request.body;
