@@ -34,6 +34,19 @@ export function renderAllCategoryItems(items, cartItems, setCartItems) {
   return rows;
 }
 
+export function renderOrderItems(orders) {
+  let rows = [];
+  orders.forEach((order) => {
+    rows.push(
+      <div>
+        <h1>{order.timestamp}</h1>
+        <p>{order.total}</p>
+      </div>
+    );
+  });
+  return rows;
+}
+
 export function sortItems(items, sortMethod) {
   const sortedItems = [...items];
     if (sortMethod === "default") {
