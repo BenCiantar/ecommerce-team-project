@@ -32,11 +32,11 @@ const Header = (props) => {
                     </NavLink>  
                 </ul>
                 <AiOutlineShoppingCart
-                  className=" w-10 h-10 pr-3 "
+                  className=" w-8 h-8 mx-3 "
                   onClick={() => toggleHidden("cart")}
                 />
                 <button onClick={()=>{showMobileMenu()}}  className=" lg:hidden mobile-menu-button ">
-                    {(isMobileMenuOpen) ? <AiOutlineClose className=" w-10 h-10 pr-3 " alt="close"/> : <AiOutlineMenu className=" w-10 h-10 pr-3 " alt="menu"/>}
+                    {(isMobileMenuOpen) ? <AiOutlineClose className=" w-8 h-8 mx-3 " alt="close"/> : <AiOutlineMenu className=" bg-black text-white w-8 h-8 mx-3 p-1 " alt="menu"/>}
                 </button>
                 {(isMobileMenuOpen) ? MobileMenu() : ''}
             </div>
