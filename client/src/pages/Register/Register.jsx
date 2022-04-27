@@ -9,7 +9,19 @@ const Register = () => {
       _id: e.target[0].value,
       password: e.target[1].value,
     };
-    axios.post("http://localhost:8080/users", newUser);
+    axios
+      .post("http://localhost:8080/users", newUser)
+      .then((res) => {
+        //if server is reachible but the response doesn't contain data
+        if (!res.ok) {
+          throw Error("couldn't fetch");
+        }
+      })
+      //if server is not reachible
+      .catch((e) => {
+        console.log(e.message);
+        alert("Error:", e.message);
+      });
   }
   return (
     <div>
