@@ -14,7 +14,6 @@ const Orders = () => {
 
   return (
     <div> 
-      <Sort orders={orders} setOrders={setOrders} />
       {rows}
     </div>
   );
