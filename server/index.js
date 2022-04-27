@@ -60,8 +60,6 @@ app.get("/users", async (request, response) => {
   response.json(users);
 });
 
-// Keep server running
-
 //Get all items from the db that match the category
 app.get("/items/:category", async (request, response) => {
   const category = request.params.category;
