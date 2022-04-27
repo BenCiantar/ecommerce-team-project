@@ -29,6 +29,7 @@ export function getOrdersFromDb(setOrders) {
       })
       .then((result) => {
         setOrders(result);
+        console.log(result)
       })
       .catch((err) => {
         console.error(err);

@@ -52,6 +52,8 @@ app.get("/cart", async (request, response) => {
 app.get('/orders', async (request, response) => {
   const ordersItems = await orderCollection.find({}).toArray();
   response.json(ordersItems);
+});
+
 // GET users
 app.get("/users", async (request, response) => {
   const users = await usersCollection.find({}).toArray();
