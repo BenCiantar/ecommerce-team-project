@@ -13,9 +13,11 @@ const Adventures = ({ cartItems, setCartItems }) => {
   let rows = renderAllCategoryItems(items, cartItems, setCartItems);
 
   return (
-    <div className="bg-background min-h-screen grid grid-cols-1 gap-5 p-5 md:grid-cols-3 lg:grid-cols-4">
-      <Sort items={items} setItems={setItems} />
-      {rows}
+    <div className="bg-background min-h-screen ">
+        <Sort items={items} setItems={setItems} />
+      <div className =" grid grid-cols-1 gap-5 p-5 md:grid-cols-3 lg:grid-cols-4 ">
+        {rows}
+      </div>
     </div>
   );
 };
