@@ -5,11 +5,11 @@ import { getAllItemsFromDb } from "./api";
 export function renderAllCategoryItems(items, cartItems, setCartItems) {
   let rows = [];
 
-  items.forEach((item) => {
-    const path = `/product/${item._id}`
+  items.forEach((item, i) => {
+    const path = `/product/${item._id}`;
 
     rows.push(
-      <div>
+      <div key={i}>
         <h1>{item.name}</h1>
         <p>
           <FaDollarSign />
@@ -82,36 +82,27 @@ export function toggleHidden(target) {
   document.getElementById(target).classList.toggle("hidden");
 }
 
-//
-
+//Removed loop so it only returns the selected item
 
 export function renderItemDetailsPage(selectedItem, cartItems, setCartItems) {
-  let rows = [];
-  selectedItem.forEach((item) => {
-    rows.push(
-      <>
-        <div className=" flex items-center p-5 bg-orange-400 justify-center">
-          <h1 className=" font-medium">{item.name}</h1>
-        </div>
-        <div className=" p-2 flex flex-col ">
-          <div className=" ">
-            <img
-              className="w-full rounded-sm"
-              src="https://images.unsplash.com/photo-1550524514-efb9046e0fec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=653&q=80"
-              alt="Ballet dancer on a street"
-            />
-          </div>
-          <div className=" flex-1   px-12">
-            <h1 className=" font-medium">wale watching</h1>
-            <p className=" my-5">
-              {item.description}
-            </p>
-            <div>
-              <span className=" font-light text-lg">$50</span>
-            </div>
-          </div>
-        </div>
-      </>
-    );
-  });
+  return (
+    <>
+      <div className="flex items-center justify-center mt-5 ">
+        <h1 className=" ">{selectedItem.name}</h1>
+      </div>
+      <div className=" ">
+        <img
+          className=""
+          src={selectedItem.image}
+          alt="Ballet dancer on a street"
+        />
+      </div>
+
+      <div className="  ">
+        <p className=" ">{selectedItem.description}</p>
+
+        <span className=" ">$ {selectedItem.price}</span>
+      </div>
+    </>
+  );
 }

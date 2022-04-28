@@ -35,17 +35,17 @@ export function getAllItemsFromDb(setAllItems) {
 }
 
 export function findItemInDbById(id, setSelectedItem) {
-  console.log(id)
+  console.log(id);
   fetch(`${API_BASE_URL}/item-by-id/${id}`, {
     headers: {
-      "content-type": "application/json",
+      "Content-Type": "application/json",
     },
   })
     .then((response) => {
       return response.json();
     })
     .then((result) => {
-      console.log(result)
+      console.log(result);
       setSelectedItem(result);
     })
     .catch((err) => {
