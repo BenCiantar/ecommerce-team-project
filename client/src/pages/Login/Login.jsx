@@ -1,8 +1,9 @@
 import React from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = ({ currentUser, setCurrentUser }) => {
+  const navigate = useNavigate();
   function loginUser(e) {
     e.preventDefault();
     const loginDetails = {
@@ -15,7 +16,7 @@ const Login = ({ currentUser, setCurrentUser }) => {
       .then((res) => {
         setCurrentUser(res.data);
         console.log(currentUser);
-
+        navigate("/");
         //if server is reachible but the response doesn't contain data
         if (res.request.statusText !== "OK") {
           throw Error("couldn't fetch");
