@@ -2,31 +2,30 @@ import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const Login = () => {
-  const [userExists, setUserExists] = React.useState(false);
+const Login = ({ currentUser, setCurrentUser }) => {
   function loginUser(e) {
     e.preventDefault();
-    axios.get("http://localhost:8080/users").then((res) => {
-      const data = res.data;
-      let id = e.target[0].value;
-      let password = e.target[1].value;
-      console.log(data);
-      console.log(data);
-      for (let x of data) {
-        console.log(x);
-        // console.log(data[x]);
-        if (x._id === id && x.password === password) {
-          alert("Logged in");
-          setUserExists(true);
-          break;
-        } else if (x._id !== id) {
-          alert("incorrect email");
-        } else {
-          alert("incorrect password");
-          break;
+    const loginDetails = {
+      _id: e.target[0].value,
+      password: e.target[1].value,
+    };
+
+    axios
+      .post("http://localhost:8080/login", loginDetails)
+      .then((res) => {
+        setCurrentUser(res.data);
+        console.log(currentUser);
+
+        //if server is reachible but the response doesn't contain data
+        if (res.request.statusText !== "OK") {
+          throw Error("couldn't fetch");
         }
-      }
-    });
+      })
+      //if server is not reachible
+      .catch((e) => {
+        console.log(e.message);
+        alert("Error:", e.message);
+      });
   }
   return (
     <div>

@@ -1,6 +1,6 @@
-import React from 'react';
-import { Header } from './components/index';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React from "react";
+import { Header } from "./components/index";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {
   Home,
   Adventures,
@@ -9,10 +9,11 @@ import {
   Login,
   Orders,
   Register,
-} from './pages/index';
+} from "./pages/index";
 
 function App() {
   const [cartItems, setCartItems] = React.useState([]);
+  const [currentUser, setCurrentUser] = React.useState({});
 
   return (
     <div>
@@ -20,7 +21,15 @@ function App() {
         <Header cartItems={cartItems} setCartItems={setCartItems} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/login"
+            element={
+              <Login
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
+          />
           <Route
             path="/adventures"
             element={
