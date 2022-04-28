@@ -5,6 +5,7 @@ import {
 } from "../../scripts/tools";
 import { placeOrder } from "../../scripts/api";
 
+
 const Cart = ({ cartItems, setCartItems }) => {
   const totalPrice = cartItems.reduce(
     (sum, obj) => obj.price * obj.quantity + sum,
