@@ -18,7 +18,12 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <Header cartItems={cartItems} setCartItems={setCartItems} />
+        <Header
+          cartItems={cartItems}
+          setCartItems={setCartItems}
+          currentUser={currentUser}
+          setCurrentUser={setCurrentUser}
+        />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route
