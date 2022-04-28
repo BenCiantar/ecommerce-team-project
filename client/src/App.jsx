@@ -13,7 +13,7 @@ import {
 
 function App() {
   const [cartItems, setCartItems] = React.useState([]);
-  const [currentUser, setCurrentUser] = React.useState({});
+  const [currentUser, setCurrentUser] = React.useState({ isLoggedIn: false });
 
   return (
     <div>

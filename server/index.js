@@ -95,6 +95,7 @@ app.post("/login", async (request, response) => {
     ) {
       userExist = true;
       userDetails = user;
+      userDetails.isLoggedIn = true;
     }
   }
   if (userExist) {
