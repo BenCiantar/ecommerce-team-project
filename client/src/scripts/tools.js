@@ -37,8 +37,14 @@ export function renderAllCategoryItems(items, cartItems, setCartItems) {
 export function renderOrderItems(orders) {
   let rows = [];
   orders.forEach((order) => {
+    let timestamp = order.timestamp;
+    let total = order.total;
+    let id = order._id
     let cartArray = order.cart;
     rows.push(
+    <p>{timestamp}</p>,
+    <p>{total}</p>,
+    <p>{id}</p>,
     <p>{cartArray[0].name}</p>,
     <p>{cartArray[0].price}</p>,
     <p>{cartArray[0].quantity}</p>
