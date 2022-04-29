@@ -37,14 +37,15 @@ export function getOrdersFromDb(setOrders) {
   }
 
 export function placeOrder(cartItems, setCartItems, totalPrice) {
-  const newOrderDetails = {
-    cart: cartItems,
-    total: totalPrice,
-    timestamp: new Date(),
-  };
 
-  fetch(`${API_BASE_URL}/place-order`, {
-    method: "POST",
+    const newOrderDetails = {
+        "cart": cartItems,
+        "total": totalPrice,
+        "timestamp": new Date()
+    }
+  
+    fetch(`${API_BASE_URL}/place-order`, {
+    method: 'POST',
     headers: {
       "Content-Type": "application/json",
     },
