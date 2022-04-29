@@ -18,15 +18,34 @@ export function getItemsFromDb(category, setItems) {
     });
 }
 
-export function placeOrder(cartItems, setCartItems, totalPrice) {
-  const newOrderDetails = {
-    cart: cartItems,
-    total: totalPrice,
-    timestamp: new Date(),
-  };
+export function getOrdersFromDb(setOrders) {
+    fetch(`${API_BASE_URL}/orders`, {
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((result) => {
+        setOrders(result);
+        console.log(result)
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
 
-  fetch(`${API_BASE_URL}/place-order`, {
-    method: "POST",
+export function placeOrder(cartItems, setCartItems, totalPrice) {
+
+    const newOrderDetails = {
+        "cart": cartItems,
+        "total": totalPrice,
+        "timestamp": new Date()
+    }
+  
+    fetch(`${API_BASE_URL}/place-order`, {
+    method: 'POST',
     headers: {
       "Content-Type": "application/json",
     },

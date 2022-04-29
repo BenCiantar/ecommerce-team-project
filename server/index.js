@@ -49,13 +49,16 @@ app.get("/cart", async (request, response) => {
   response.json(cartItems);
 });
 
+app.get('/orders', async (request, response) => {
+  const ordersItems = await orderCollection.find({}).toArray();
+  response.json(ordersItems);
+});
+
 // GET users
 app.get("/users", async (request, response) => {
   const users = await usersCollection.find({}).toArray();
   response.json(users);
 });
-
-// Keep server running
 
 //Get all items from the db that match the category
 app.get("/items/:category", async (request, response) => {
