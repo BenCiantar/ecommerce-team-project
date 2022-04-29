@@ -1,4 +1,6 @@
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart, FaDollarSign } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
+
 
 export function renderAllCategoryItems(items, cartItems, setCartItems) {
   let rows = [];
@@ -60,6 +62,7 @@ export function renderOrderItems(orders) {
 
 export function sortItems(items, sortMethod) {
   const sortedItems = [...items];
+
     if (sortMethod === "default") {
       return sortedItems;
     }
@@ -125,4 +128,43 @@ export function addItemToCart(item, cartItems, setCartItems) {
 
 export function toggleHidden(target) {
   document.getElementById(target).classList.toggle("hidden");
+}
+
+export function renderLoginLogoutBtn(
+  currentUser,
+  setCurrentUser,
+  isMobileMenuOpen,
+  setisMobileMenuOpen
+) {
+  const logOutUser = () => {
+    setisMobileMenuOpen(false);
+    setCurrentUser({ isLoggedIn: false });
+  };
+  const rows = [];
+  if (currentUser.isLoggedIn) {
+    rows.push(
+      <NavLink to="/" className="" onClick={() => logOutUser()}>
+        <h2>Log out</h2>
+      </NavLink>
+    );
+  } else {
+    rows.push(
+      <NavLink
+        to="/login"
+        className=""
+        onClick={() => setisMobileMenuOpen(false)}
+      >
+        <h2>Log in</h2>
+      </NavLink>
+    );
+  }
+  return rows;
+
+  //   <NavLink
+  //   to="/login"
+  //   className=""
+  //   onClick={() => setisMobileMenuOpen(false)}
+  // >
+  //   <h2>login</h2>
+  // </NavLink>
 }

@@ -86,6 +86,30 @@ app.post("/users", async (request, response) => {
   response.status(200).end();
 });
 
+app.post("/login", async (request, response) => {
+  const loginDetails = request.body;
+  const users = await usersCollection.find({}).toArray();
+  let userExist = false;
+  let userDetails = {};
+  for (let user of users) {
+    if (
+      user._id === loginDetails._id &&
+      user.password === loginDetails.password
+    ) {
+      userExist = true;
+      userDetails = user;
+      userDetails.isLoggedIn = true;
+    }
+  }
+  if (userExist) {
+    response.json(userDetails);
+    response.status(200).end();
+  } else {
+    response.statusMessage = "Incorrect login details, please try again.";
+    response.status(400).end();
+  }
+});
+
 //Keep server running
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}.`);

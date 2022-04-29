@@ -1,6 +1,6 @@
-import React from 'react';
-import { Header } from './components/index';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React from "react";
+import { Header } from "./components/index";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {
   Home,
   Adventures,
@@ -9,18 +9,32 @@ import {
   Login,
   Orders,
   Register,
-} from './pages/index';
+} from "./pages/index";
 
 function App() {
   const [cartItems, setCartItems] = React.useState([]);
+  const [currentUser, setCurrentUser] = React.useState({ isLoggedIn: false });
 
   return (
     <div>
       <BrowserRouter>
-        <Header cartItems={cartItems} setCartItems={setCartItems} />
+        <Header
+          cartItems={cartItems}
+          setCartItems={setCartItems}
+          currentUser={currentUser}
+          setCurrentUser={setCurrentUser}
+        />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/login"
+            element={
+              <Login
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
+          />
           <Route
             path="/adventures"
             element={
