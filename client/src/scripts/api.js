@@ -1,4 +1,3 @@
-import { FaTools } from "react-icons/fa";
 import { API_BASE_URL } from "../config";
 
 export function getItemsFromDb(category, setItems) {
@@ -29,6 +28,23 @@ export function getAllItemsFromDb(setAllItems) {
     })
     .then((result) => {
       setAllItems(result);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
+
+export function getFilteredItemsFromDb(setResults) {
+  fetch(`${API_BASE_URL}/filtered-items/`, {
+    headers: {
+      "content-type": "application/json",
+    },
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      setResults(result);
     })
     .catch((err) => {
       console.error(err);
