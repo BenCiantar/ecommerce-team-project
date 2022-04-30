@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { AiOutlineShoppingCart, AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { toggleHidden } from "../../scripts/tools";
-import { Cart } from "../index";
+import { Cart, Search } from "../index";
 
 const Header = (props) => {
 
@@ -43,8 +43,8 @@ const Header = (props) => {
             </div>
             <Cart {...props} />
         </nav>
-        <section className="w-full h-8 bg-white flex flex-row justify-end items-center pr-4">
-          <p>Insert search here</p>
+        <section className="w-full h-8 bg-white flex flex-row justify-end items-center pr-6">
+          <Search />
         </section>
       </header>
     )
