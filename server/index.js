@@ -69,12 +69,21 @@ app.get("/items/:category", async (request, response) => {
   response.json(filteredItems);
 });
 
-//Get all items from the db that match the category
+//Get all items from the db
 app.get("/all-items/", async (request, response) => {
   const items = await itemsCollection
     .find({})
     .toArray();
   response.json(items);
+});
+
+//Get all items from the db where the name inclused the query string
+app.get("/filtered-items/:query", async (request, response) => {
+  const query = request.params.query;
+  const filteredItems = await itemsCollection
+    .find({ name: query })
+    .toArray();
+  response.json(filteredItems);
 });
 
 app.post("/place-order", async (request, response) => {
