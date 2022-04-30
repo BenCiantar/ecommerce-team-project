@@ -9,6 +9,7 @@ import {
   Login,
   Orders,
   Register,
+  SearchResults,
 } from './pages/index';
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           />
           <Route path="/culture" element={<Culture />} />
           <Route path="/orders" element={<Orders />} />
+          <Route path="/searchresults" element={<SearchResults />} />
           <Route path="*" element={<BadURL404 />} />
           <Route path="/register" element={<Register />} />
         </Routes>
