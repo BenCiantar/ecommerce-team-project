@@ -48,11 +48,13 @@ export function renderLiveSearchItems(items){
   let rows = [];
   items.forEach((item) => {
     rows.push(
-      <div>
-        <img src={item.image} alt={item.alt}></img>
-        <p>{item.name}</p>
-        <p>{item.price}</p>
+      //Add link to item detail pages here
+      <div className="h-12 w-full p-8 flex flex-row justify-between items-center border-b border-l border-r border-slate-400">
+        <img className="w-14" src={item.image} alt={item.alt}></img>
+        <p className="w-18">{item.name}</p>
+        <p className="w-18">{item.price} kr</p>
       </div>
+      //Close link
     );
   });
   return rows;
