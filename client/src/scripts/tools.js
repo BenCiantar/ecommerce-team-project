@@ -34,6 +34,30 @@ export function renderAllCategoryItems(items, cartItems, setCartItems) {
   return rows;
 }
 
+export function filterItems(items, query) {
+  let results = [];
+  for (let item of items) {
+    if (item.name.toLowerCase().includes(query.toLowerCase())){
+      results.push(item);
+    }
+  }
+  return results;
+}
+
+export function renderLiveSearchItems(items){
+  let rows = [];
+  items.forEach((item) => {
+    rows.push(
+      <div>
+        <img src={item.image} alt={item.alt}></img>
+        <p>{item.name}</p>
+        <p>{item.price}</p>
+      </div>
+    );
+  });
+  return rows;
+}
+
 export function renderOrderItems(orders) {
   let rows = [];
   orders.forEach((order) => {

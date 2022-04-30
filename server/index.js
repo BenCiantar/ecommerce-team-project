@@ -69,6 +69,14 @@ app.get("/items/:category", async (request, response) => {
   response.json(filteredItems);
 });
 
+//Get all items from the db that match the category
+app.get("/all-items/", async (request, response) => {
+  const items = await itemsCollection
+    .find({})
+    .toArray();
+  response.json(items);
+});
+
 app.post("/place-order", async (request, response) => {
   const newOrder = request.body;
   console.log(request.body);

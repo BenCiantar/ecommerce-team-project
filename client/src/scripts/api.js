@@ -18,6 +18,23 @@ export function getItemsFromDb(category, setItems) {
     });
 }
 
+export function getAllItemsFromDb(setAllItems) {
+  fetch(`${API_BASE_URL}/all-items/`, {
+    headers: {
+      "content-type": "application/json",
+    },
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      setAllItems(result);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
+
 export function getOrdersFromDb(setOrders) {
     fetch(`${API_BASE_URL}/orders`, {
       headers: {

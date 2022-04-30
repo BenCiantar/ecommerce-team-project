@@ -13,7 +13,7 @@ const Header = (props) => {
     }
 
     return (
-      <header className="w-full h-auto bg-white border-b-2 border-black">
+      <header className="w-full h-24 bg-white border-b-2 border-black">
         <nav className="w-full h-12 bg-white text-black items-center flex flex-row justify-between ">
             <div className=" brand-logo text-xl font-bold pl-2 ">
               <NavLink to="/" className="" onClick={() => setisMobileMenuOpen(false)} >
