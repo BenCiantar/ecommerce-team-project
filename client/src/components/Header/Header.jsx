@@ -13,7 +13,8 @@ const Header = (props) => {
     }
 
     return (
-        <nav className="w-full h-12 bg-white text-black border-b-2 border-black items-center flex flex-row justify-between ">
+      <header className="w-full h-auto bg-white border-b-2 border-black">
+        <nav className="w-full h-12 bg-white text-black items-center flex flex-row justify-between ">
             <div className=" brand-logo text-xl font-bold pl-2 ">
               <NavLink to="/" className="" onClick={() => setisMobileMenuOpen(false)} >
                 <h2>Logo</h2>
@@ -42,6 +43,10 @@ const Header = (props) => {
             </div>
             <Cart {...props} />
         </nav>
+        <section className="w-full h-8 bg-white flex flex-row justify-end items-center pr-4">
+          <p>Insert search here</p>
+        </section>
+      </header>
     )
 
     function MobileMenu(){
@@ -63,7 +68,5 @@ const Header = (props) => {
   };
 
 };
-
-
 
 export default Header;
