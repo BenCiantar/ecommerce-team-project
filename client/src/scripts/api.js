@@ -34,8 +34,8 @@ export function getAllItemsFromDb(setAllItems) {
     });
 }
 
-export function getFilteredItemsFromDb(setResults) {
-  fetch(`${API_BASE_URL}/filtered-items/`, {
+export function getFilteredItemsFromDb(query, setResults) {
+  fetch(`${API_BASE_URL}/filtered-items/${query}`, {
     headers: {
       "content-type": "application/json",
     },

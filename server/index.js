@@ -81,7 +81,7 @@ app.get("/all-items/", async (request, response) => {
 app.get("/filtered-items/:query", async (request, response) => {
   const query = request.params.query;
   const filteredItems = await itemsCollection
-    .find({ name: query })
+    .find({name: {$regex: query, $options: "i"}})
     .toArray();
   response.json(filteredItems);
 });
