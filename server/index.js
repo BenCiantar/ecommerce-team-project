@@ -14,6 +14,8 @@ mongoClient.connect();
 const db = mongoClient.db("ecommerce-group");
 const itemsCollection = db.collection("items");
 const cartCollection = db.collection("cart");
+const orderCollection = db.collection("orders");
+const usersCollection = db.collection("users");
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -48,7 +50,16 @@ app.get("/cart", async (request, response) => {
   response.json(cartItems);
 });
 
-// Keep server running
+app.get('/orders', async (request, response) => {
+  const ordersItems = await orderCollection.find({}).toArray();
+  response.json(ordersItems);
+});
+
+// GET users
+app.get("/users", async (request, response) => {
+  const users = await usersCollection.find({}).toArray();
+  response.json(users);
+});
 
 //Get all items from the db that match the category
 app.get("/items/:category", async (request, response) => {
@@ -69,6 +80,47 @@ app.get("/item-by-id/:id", async (request, response) => {
     console.log(request.params);
   } catch (err) {
     console.log(err);
+  }
+});
+
+app.post("/place-order", async (request, response) => {
+  const newOrder = request.body;
+  console.log(request.body);
+
+  await orderCollection.insertOne(newOrder);
+
+  response.status(200).end();
+});
+
+// Register a user -- POST
+app.post("/users", async (request, response) => {
+  const newUser = request.body;
+  await usersCollection.insertOne(newUser);
+
+  response.status(200).end();
+});
+
+app.post("/login", async (request, response) => {
+  const loginDetails = request.body;
+  const users = await usersCollection.find({}).toArray();
+  let userExist = false;
+  let userDetails = {};
+  for (let user of users) {
+    if (
+      user._id === loginDetails._id &&
+      user.password === loginDetails.password
+    ) {
+      userExist = true;
+      userDetails = user;
+      userDetails.isLoggedIn = true;
+    }
+  }
+  if (userExist) {
+    response.json(userDetails);
+    response.status(200).end();
+  } else {
+    response.statusMessage = "Incorrect login details, please try again.";
+    response.status(400).end();
   }
 });
 

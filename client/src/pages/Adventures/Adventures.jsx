@@ -1,18 +1,23 @@
 import { getItemsFromDb } from "../../scripts/api";
 import { useEffect, useState } from "react";
 import { renderAllCategoryItems } from "../../scripts/tools";
+import { Sort } from "../../components";
 
 const Adventures = ({ cartItems, setCartItems }) => {
   const [items, setItems] = useState([]);
   
   useEffect(() => {
-    rows = getItemsFromDb("Adventure", setItems);
+    getItemsFromDb("Adventure", setItems);
   }, []);
 
   let rows = renderAllCategoryItems(items, cartItems, setCartItems);
+
   return (
-    <div>
-      {rows}
+    <div className="bg-background min-h-screen ">
+        <Sort items={items} setItems={setItems} />
+      <div className =" grid grid-cols-1 gap-5 p-5 md:grid-cols-3 lg:grid-cols-4 ">
+        {rows}
+      </div>
     </div>
   );
 };
