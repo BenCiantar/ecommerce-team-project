@@ -20,9 +20,9 @@ export function renderAllCategoryItems(items, cartItems, setCartItems) {
           <p className="text-md pb-4">{item.shortdes}</p>
         </div>
         <div className="w-full flex flex-row justify-between items-center">
-          <Link to={path}>
+          <Link className="w-1/2" to={path}>
             <button
-              className="bg-green-600 text-white mr-1 w-1/2 min-w-fit flex flex-row justify-center items-center p-1 shadow-md"
+              className="bg-green-600 text-white mr-1 w-full min-w-fit flex flex-row justify-center items-center p-1 shadow-md"
             >
             Read More
             </button>
@@ -54,14 +54,15 @@ export function filterItems(items, query) {
 export function renderLiveSearchItems(items){
   let rows = [];
   items.forEach((item) => {
+    const path = `/product/${item._id}`;
     rows.push(
-      //Add link to item detail pages here
-      <div className="h-12 w-full p-8 flex flex-row justify-between items-center border-b border-l border-r border-slate-400">
-        <img className="w-14" src={item.image} alt={item.alt}></img>
-        <p className="w-18">{item.name}</p>
-        <p className="w-18">{item.price} kr</p>
-      </div>
-      //Close link
+      <Link to={path}>
+        <div className="h-12 w-full p-8 flex flex-row justify-between items-center border-b border-l border-r border-slate-400">
+          <img className="w-14" src={item.image} alt={item.alt}></img>
+          <p className="w-18">{item.name}</p>
+          <p className="w-18">{item.price} kr</p>
+        </div>
+      </Link>
     );
   });
   return rows;

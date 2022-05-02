@@ -32,9 +32,11 @@ const Search = () => {
     }
 
     const handleBlur = (e) => {
-        if (!document.getElementById('live-search').classList.contains('hidden')){
-            toggleHidden('live-search');
-        }
+        setTimeout(() => {
+            if (!document.getElementById('live-search').classList.contains('hidden')){
+                toggleHidden('live-search');
+            }
+        }, "100");
     }
 
     const handleSubmit = (e) => {
