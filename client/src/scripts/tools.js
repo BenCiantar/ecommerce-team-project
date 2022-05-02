@@ -16,7 +16,7 @@ export function renderAllCategoryItems(items, cartItems, setCartItems) {
         <div className="w-full h-1/3">
         <div className="w-full flex flex-col justify-start items-left">
           <h1 className="text-lg mb-1 font-bold">{item.name}</h1>
-          <p className="text-sm pb-3">{item.company}</p>
+          <p className="text-sm pb-3 whitespace-nowrap overflow-hidden">{item.company}</p>
           <p className="text-md pb-4">{item.shortdes}</p>
         </div>
         <div className="w-full flex flex-row justify-between items-center">
