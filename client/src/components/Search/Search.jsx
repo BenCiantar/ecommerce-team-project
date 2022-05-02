@@ -39,7 +39,7 @@ const Search = () => {
             if (!document.getElementById('live-search').classList.contains('hidden')){
                 toggleHidden('live-search');
             }
-        }, "100");
+        }, "200");
     }
 
     const handleSubmit = (e) => {
