@@ -1,6 +1,6 @@
 //Import dependencies
 import express from "express";
-import mongodb from "mongodb";
+import mongodb, { ObjectId } from "mongodb";
 import cors from "cors";
 
 //Configure MongoDB
@@ -39,6 +39,7 @@ app.use(requestLogger);
 app.use(express.json());
 app.use(cors({ origin: "http://localhost:3000" }));
 
+//get item collection
 app.get("/items", async (request, response) => {
   const products = await itemsCollection.find({}).toArray();
   response.json(products);
@@ -67,6 +68,19 @@ app.get("/items/:category", async (request, response) => {
     .find({ category: category })
     .toArray();
   response.json(filteredItems);
+});
+//Get single item that matches Id
+// add new to ObjectId, import ObjectId, findOne instead of find()
+//try and catch
+app.get("/item-by-id/:id", async (request, response) => {
+  try {
+    const id = new ObjectId(request.params.id);
+    const filteredItems = await itemsCollection.findOne({ _id: id });
+    response.json(filteredItems);
+    console.log(request.params);
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 app.post("/place-order", async (request, response) => {
