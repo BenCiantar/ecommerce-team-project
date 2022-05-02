@@ -1,8 +1,8 @@
 import { FaSistrix } from "react-icons/fa";
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import { getAllItemsFromDb, getSearchResults } from "../../scripts/api";
-import { filterItems, renderLiveSearchItems, toggleHidden } from "../../scripts/tools"
+import { getAllItemsFromDb } from "../../scripts/api";
+import { filterItems, renderLiveSearchItems, toggleHidden } from "../../scripts/tools";
 
 const Search = () => { 
     const [allItems, setAllItems] = useState([]);
@@ -48,8 +48,9 @@ const Search = () => {
 
         navigate(`/searchresults/${searchInput}`);
 
-        console.log(searchInput);
+        window.location.reload()
     }
+
 
     let rows = renderLiveSearchItems(searchResults);
 
