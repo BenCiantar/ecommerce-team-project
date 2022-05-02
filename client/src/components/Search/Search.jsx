@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { getAllItemsFromDb } from "../../scripts/api";
 import { filterItems, renderLiveSearchItems, toggleHidden } from "../../scripts/tools";
 
-const Search = () => { 
+const Search = ({setSelectedItem}) => { 
     const [allItems, setAllItems] = useState([]);
     const [searchResults, setSearchResults] = useState([]);
 
@@ -48,11 +48,11 @@ const Search = () => {
 
         navigate(`/searchresults/${searchInput}`);
 
-        window.location.reload()
+        window.location.reload();
     }
 
 
-    let rows = renderLiveSearchItems(searchResults);
+    let rows = renderLiveSearchItems(searchResults, setSelectedItem);
 
     return (
         <>

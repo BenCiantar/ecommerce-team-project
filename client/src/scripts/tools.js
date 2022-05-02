@@ -51,18 +51,19 @@ export function filterItems(items, query) {
   return results;
 }
 
-export function renderLiveSearchItems(items){
+export function renderLiveSearchItems(items, setSelectedItem){
   let rows = [];
   items.forEach((item) => {
-    const path = `/product/${item._id}`;
+    // const path = `/product/${item._id}`;
+
     rows.push(
-      <Link to={path}>
-        <div className="h-12 w-full p-8 flex flex-row justify-between items-center border-b border-l border-r border-slate-400">
+      // <Link to={path} >
+        <div onClick={() => setSelectedItem(item)} className="h-12 w-full p-8 flex flex-row justify-between items-center border-b border-l border-r border-slate-400">
           <img className="w-14" src={item.image} alt={item.alt}></img>
           <p className="w-18">{item.name}</p>
           <p className="w-18">{item.price} kr</p>
         </div>
-      </Link>
+      // </Link>
     );
   });
   return rows;

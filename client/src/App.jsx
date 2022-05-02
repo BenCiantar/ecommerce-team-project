@@ -16,6 +16,7 @@ import {
 function App() {
   const [cartItems, setCartItems] = React.useState([]);
   const [currentUser, setCurrentUser] = React.useState({ isLoggedIn: false });
+  const [selectedItem, setSelectedItem] = React.useState([]);
 
   return (
     <div>
@@ -25,6 +26,7 @@ function App() {
           setCartItems={setCartItems}
           currentUser={currentUser}
           setCurrentUser={setCurrentUser}
+          setSelectedItem={setSelectedItem}
         />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -47,7 +49,7 @@ function App() {
           <Route path="/orders" element={<Orders />} />
           <Route path="/searchresults/:searchInput" element={<SearchResults />} />
           <Route path="*" element={<BadURL404 />} />
-          <Route path="/product/:id" element={<ProductInfo cartItems={cartItems} setCartItems={setCartItems} />} />
+          <Route path="/product/:id" element={<ProductInfo cartItems={cartItems} setCartItems={setCartItems} selectedItem={selectedItem} setSelectedItem={setSelectedItem} />} />
           <Route path="/register" element={<Register />} />
         </Routes>
       </BrowserRouter>
