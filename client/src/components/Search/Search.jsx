@@ -1,11 +1,14 @@
 import { FaSistrix } from "react-icons/fa";
 import { useState, useEffect } from 'react';
-import { getAllItemsFromDb } from "../../scripts/api";
+import { useNavigate } from "react-router-dom";
+import { getAllItemsFromDb, getSearchResults } from "../../scripts/api";
 import { filterItems, renderLiveSearchItems, toggleHidden } from "../../scripts/tools"
 
 const Search = () => { 
     const [allItems, setAllItems] = useState([]);
     const [searchResults, setSearchResults] = useState([]);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         getAllItemsFromDb(setAllItems);
@@ -41,25 +44,11 @@ const Search = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // const searchInput = e.target.search.value;
+        const searchInput = e.target.search.value;
 
-    //     fetch(`${config.API_BASE_URL}/item-search/${searchInput}`, {
-    //     headers: {
-    //         "content-type": "application/json",
-    //     },
-    //     })
-    //     .then((response) => {
-    //         return response.json();
-    //     })
-    //     .then((result) => {
-    //         const sortBy = document.getElementById("sorting").value;
-    //         const sortedItems = sortItems(result, sortBy)
-    //         setItems(sortedItems);
-    //         e.target.reset();
-    //     })
-    //     .catch((err) => {
-    //         console.error(err);
-    //     });
+        navigate(`/searchresults/${searchInput}`);
+
+        console.log(searchInput);
     }
 
     let rows = renderLiveSearchItems(searchResults);

@@ -52,6 +52,24 @@ export function getFilteredItemsFromDb(query, setResults) {
     });
 }
 
+// export function getSearchResults(searchInput){
+//   fetch(`${API_BASE_URL}/filtered-items/${searchInput}`, {
+//     headers: {
+//         "content-type": "application/json",
+//     },
+//     })
+//     .then((response) => {
+//         return response.json();
+//     })
+//     .then((result) => {
+//       console.log(searchInput);
+//         return result;
+//     })
+//     .catch((err) => {
+//         console.error(err);
+//     });
+// }
+
 export function findItemInDbById(id, setSelectedItem) {
   console.log(id);
   fetch(`${API_BASE_URL}/item-by-id/${id}`, {
