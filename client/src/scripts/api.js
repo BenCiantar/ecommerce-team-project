@@ -1,4 +1,3 @@
-
 import { FaTools } from "react-icons/fa";
 import { API_BASE_URL } from "../config";
 
@@ -19,9 +18,8 @@ export function getItemsFromDb(category, setItems) {
     });
 }
 
-//Check where this function is used, Should we remove it?
 export function getAllItemsFromDb(setAllItems) {
-  fetch(`${API_BASE_URL}/items`, {
+  fetch(`${API_BASE_URL}/all-items/`, {
     headers: {
       "content-type": "application/json",
     },
@@ -31,6 +29,23 @@ export function getAllItemsFromDb(setAllItems) {
     })
     .then((result) => {
       setAllItems(result);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
+
+export function getFilteredItemsFromDb(query, setResults) {
+  fetch(`${API_BASE_URL}/filtered-items/${query}`, {
+    headers: {
+      "content-type": "application/json",
+    },
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      setResults(result);
     })
     .catch((err) => {
       console.error(err);

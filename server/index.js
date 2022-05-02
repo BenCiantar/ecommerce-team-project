@@ -83,6 +83,23 @@ app.get("/item-by-id/:id", async (request, response) => {
   }
 });
 
+//Get all items from the db
+app.get("/all-items/", async (request, response) => {
+  const items = await itemsCollection
+    .find({})
+    .toArray();
+  response.json(items);
+});
+
+//Get all items from the db where the name inclused the query string
+app.get("/filtered-items/:query", async (request, response) => {
+  const query = request.params.query;
+  const filteredItems = await itemsCollection
+    .find({name: {$regex: query, $options: "i"}})
+    .toArray();
+  response.json(filteredItems);
+});
+
 app.post("/place-order", async (request, response) => {
   const newOrder = request.body;
   console.log(request.body);

@@ -10,7 +10,8 @@ import {
   Login,
   Orders,
   Register,
-} from "./pages/index";
+  SearchResults,
+} from './pages/index';
 
 function App() {
   const [cartItems, setCartItems] = React.useState([]);
@@ -44,6 +45,7 @@ function App() {
           />
           <Route path="/culture" element={<Culture />} />
           <Route path="/orders" element={<Orders />} />
+          <Route path="/searchresults" element={<SearchResults />} />
           <Route path="*" element={<BadURL404 />} />
           <Route path="/product/:id" element={<ProductInfo cartItems={cartItems} setCartItems={setCartItems} />} />
           <Route path="/register" element={<Register />} />
