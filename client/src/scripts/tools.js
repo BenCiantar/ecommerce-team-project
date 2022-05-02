@@ -136,14 +136,22 @@ export function renderOrderItems(orders) {
     let cartArray = order.cart;
     for (let i =0; i < cartArray.length; i++) {
       cartRows.push(
-        <p>{cartArray[i].name}</p>,
-        <p>{cartArray[i].price}</p>,
-        <p>{cartArray[i].quantity}</p>
+        <ul>
+        <li>Product: {cartArray[i].name}</li>
+        <li>Price: {cartArray[i].price}</li>
+        <li>Quantity: {cartArray[i].quantity}</li>
+        <input type="radio" id="html" name="order-status" value="HTML"/>
+        <label for="html">Order has been packed</label>
+        <input type="radio" id="html" name="order-status" value="HTML"/>
+        <label for="html">Order has been shiped</label>
+        </ul>
       )}
     rows.push(
-    <p>{timestamp}</p>,
-    <p>{total}</p>,
-    <p>{id}</p>,
+    <ul>
+    <li>#{id}</li>
+    <li>Order Date: {timestamp}</li>
+    <li>Total Amount: {total}</li>
+    </ul>,
     cartRows
     )
   }); 
