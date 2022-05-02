@@ -6,7 +6,7 @@ const ProductInfo = (cartItems, setCartItems) => {
   const [selectedItem, setSelectedItem] = useState([]);
 
   const id = window.location.pathname.replace("/product/", "");
-  //add dependency into useEffect
+  //Add id dependency into useEffect to prevent infinite looping
   useEffect(() => {
     findItemInDbById(id, setSelectedItem);
   }, [id]);
