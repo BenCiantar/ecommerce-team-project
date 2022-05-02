@@ -128,31 +128,39 @@ export function renderItemDetailsPage(selectedItem, cartItems, setCartItems) {
 
 export function renderOrderItems(orders) {
   let rows = [];
-  let cartRows = [];
   orders.forEach((order) => {
     let timestamp = order.timestamp;
     let total = order.total;
     let id = order._id
     let cartArray = order.cart;
+    let cartRows = [];
+    console.log(cartArray);
     for (let i =0; i < cartArray.length; i++) {
       cartRows.push(
-        <ul>
-        <li>Product: {cartArray[i].name}</li>
-        <li>Price: {cartArray[i].price}</li>
-        <li>Quantity: {cartArray[i].quantity}</li>
-        <input type="radio" id="html" name="order-status" value="HTML"/>
-        <label for="html">Order has been packed</label>
-        <input type="radio" id="html" name="order-status" value="HTML"/>
-        <label for="html">Order has been shiped</label>
-        </ul>
+        <div>
+          <section>Product: {cartArray[i].name}</section>
+          <section>Price: {cartArray[i].price}SEK</section>
+          <section>Quantity: {cartArray[i].quantity}</section>
+        </div>
       )}
+
     rows.push(
-    <ul>
-    <li>#{id}</li>
-    <li>Order Date: {timestamp}</li>
-    <li>Total Amount: {total}</li>
-    </ul>,
-    cartRows
+      <div className =" grid grid-cols-1 gap-5 p-5 md:grid-cols-3 lg:grid-cols-4 ">
+        <div>
+          <section>#{id}</section>
+        </div>
+        <div>
+          <section>{timestamp}</section>
+        </div>
+        <div>
+          <section>{total}SEK</section>
+        </div>
+        <div>
+          {cartRows}
+        </div>
+        
+        </div>,
+        <div><hr /></div>
     )
   }); 
   return rows;
