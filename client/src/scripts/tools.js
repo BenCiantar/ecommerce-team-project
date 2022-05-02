@@ -1,6 +1,5 @@
 import { FaShoppingCart, FaDollarSign } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { getAllItemsFromDb } from "./api";
 
 export function renderAllCategoryItems(items, cartItems, setCartItems) {
