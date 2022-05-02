@@ -19,6 +19,7 @@ export function getItemsFromDb(category, setItems) {
     });
 }
 
+//Check where this function is used, Should we remove it?
 export function getAllItemsFromDb(setAllItems) {
   fetch(`${API_BASE_URL}/items`, {
     headers: {
