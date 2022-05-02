@@ -88,20 +88,23 @@ export function renderItemDetailsPage(selectedItem, cartItems, setCartItems) {
   return (
     <>
       <div className="flex items-center justify-center mt-5 ">
-        <h1 className=" ">{selectedItem.name}</h1>
+        <h1 className=" text-xl ">{selectedItem.name}</h1>
       </div>
-      <div className=" ">
+      <div className=" w-full ">
         <img
-          className=""
+          className=" w-full p-3"
           src={selectedItem.image}
           alt="Ballet dancer on a street"
         />
       </div>
 
-      <div className="  ">
-        <p className=" ">{selectedItem.description}</p>
-
-        <span className=" ">$ {selectedItem.price}</span>
+      <div className="flex items-center flex-col  p-3 ">
+        <h1 className=" text-2xl my-2.5"> Welcome to {selectedItem.company}</h1>
+        <div className=" flex p-3 bg-gray-200 w-3/4 items-center justify-between">
+          <h2 className="text-center"> Quick Details </h2>
+        </div>
+        <span className=" my-2.5 ">${selectedItem.price}</span>
+        <p className="text-center ">{selectedItem.main_description}</p>
       </div>
     </>
   );
