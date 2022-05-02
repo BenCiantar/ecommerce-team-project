@@ -39,7 +39,7 @@ const Login = ({ currentUser, setCurrentUser }) => {
           <label htmlFor="email">
             <h3 className=" text-sm uppercase mb-1">E-mail:</h3>
             <input
-              className="border-solid border border-slate-400 w-64 px-2 py-1 mb-4"
+              className="input-primary"
               type="email"
               required
               id="email"
@@ -49,17 +49,14 @@ const Login = ({ currentUser, setCurrentUser }) => {
           <label htmlFor="password">
             <h3 className=" text-sm uppercase mb-1">Password:</h3>
             <input
-              className="border-solid border border-slate-400 w-64 px-2 py-1 mb-6"
+              className="input-primary"
               type="password"
               required
               id="password"
               placeholder="Enter a password"
             />
           </label>
-          <button
-            className="bg-green-600 md:hover:bg-green-400 text-white w-1/2 min-w-fit flex flex-row justify-center items-center p-1 shadow-md mb-2 "
-            type="submit"
-          >
+          <button className="btn-primary" type="submit">
             LOG IN
           </button>
           <Link to="/register" className="text-xs text-slate-400">
