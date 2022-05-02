@@ -22,13 +22,13 @@ export function renderAllCategoryItems(items, cartItems, setCartItems) {
         <div className="w-full flex flex-row justify-between items-center">
           <Link className="w-1/2" to={path}>
             <button
-              className="bg-green-600 text-white mr-1 w-full min-w-fit flex flex-row justify-center items-center p-1 shadow-md"
+              className="btn-primary w-full mr-1"
             >
             Read More
             </button>
           </Link>
           <button
-            className="bg-green-600 text-white ml-1 w-1/2 min-w-fit flex flex-row justify-center items-center p-1 shadow-md"
+            className="btn-primary ml-1"
             onClick={() => addItemToCart(item, cartItems, setCartItems)}
           >
             <FaShoppingCart /> <p className="ml-2">{item.price} kr</p>
