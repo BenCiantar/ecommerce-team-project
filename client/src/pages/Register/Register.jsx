@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 
 const Register = () => {
-  function handleSubmit(e) {
+  function registerNewUser(e) {
     e.preventDefault();
 
     let newUser = {
@@ -25,8 +25,8 @@ const Register = () => {
   }
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <h1>Sign In</h1>
+      <form onSubmit={registerNewUser}>
+        <h1>Register an account</h1>
         <label htmlFor="email">
           Email:
           <input

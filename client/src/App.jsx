@@ -1,26 +1,41 @@
-import React from 'react';
-import { Header } from './components/index';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React from "react";
+import { Header } from "./components/index";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {
   Home,
   Adventures,
   Culture,
   BadURL404,
+  ProductInfo,
   Login,
   Orders,
   Register,
-} from './pages/index';
+} from "./pages/index";
 
 function App() {
   const [cartItems, setCartItems] = React.useState([]);
+  const [currentUser, setCurrentUser] = React.useState({ isLoggedIn: false });
 
   return (
     <div>
       <BrowserRouter>
-        <Header cartItems={cartItems} setCartItems={setCartItems} />
+        <Header
+          cartItems={cartItems}
+          setCartItems={setCartItems}
+          currentUser={currentUser}
+          setCurrentUser={setCurrentUser}
+        />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/login"
+            element={
+              <Login
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
+          />
           <Route
             path="/adventures"
             element={
@@ -30,6 +45,7 @@ function App() {
           <Route path="/culture" element={<Culture />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="*" element={<BadURL404 />} />
+          <Route path="/product/:id" element={<ProductInfo cartItems={cartItems} setCartItems={setCartItems} />} />
           <Route path="/register" element={<Register />} />
         </Routes>
       </BrowserRouter>

@@ -3,10 +3,9 @@ import { useEffect, useState } from "react";
 import { renderAllCategoryItems } from "../../scripts/tools";
 import { Sort } from "../../components";
 
-
 const Culture = ({ cartItems, setCartItems }) => {
   const [items, setItems] = useState([]);
-  
+
   useEffect(() => {
     getItemsFromDb("Culture", setItems);
   }, []);

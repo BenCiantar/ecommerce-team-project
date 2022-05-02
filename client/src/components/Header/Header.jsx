@@ -1,16 +1,26 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { AiOutlineShoppingCart, AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import { toggleHidden } from "../../scripts/tools";
+import {
+  AiOutlineShoppingCart,
+  AiOutlineMenu,
+  AiOutlineClose,
+} from "react-icons/ai";
+import { toggleHidden, renderLoginLogoutBtn } from "../../scripts/tools";
 import { Cart } from "../index";
 
 const Header = (props) => {
-
     const [isMobileMenuOpen, setisMobileMenuOpen] = useState(false);
 
     const showMobileMenu = () => {
         (isMobileMenuOpen) ? setisMobileMenuOpen(false) : setisMobileMenuOpen(true);
-    }
+        };
+      
+     const loginRows = renderLoginLogoutBtn(
+      props.currentUser,
+      props.setCurrentUser,
+      isMobileMenuOpen,
+      setisMobileMenuOpen
+      );
 
     return (
         <nav className="w-full h-12 bg-white text-black border-b-2 border-black items-center flex flex-row justify-between ">
@@ -59,11 +69,8 @@ const Header = (props) => {
                       </NavLink>
                   </ul>
           </nav>
-      )
+    );
   };
-
 };
-
-
 
 export default Header;

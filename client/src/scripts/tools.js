@@ -1,10 +1,15 @@
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart, FaDollarSign } from "react-icons/fa";
+import { Link, NavLink } from "react-router-dom";
+import { getAllItemsFromDb } from "./api";
 
 export function renderAllCategoryItems(items, cartItems, setCartItems) {
   let rows = [];
-  items.forEach((item) => {
+  
+  items.forEach((item, i) => {
+    const path = `/product/${item._id}`;
+    
     rows.push(
-      <div className="w-full h-96 p-3 bg-white border-2 flex flex-col justify-start items-center">
+      <div key={i} className="w-full h-96 p-3 bg-white border-2 flex flex-col justify-start items-center">
         <div className="w-full h-1/2 pb-2">
           <img src={item.image} alt={item.alt} className="w-full h-full object-cover" />
         </div>
@@ -15,11 +20,13 @@ export function renderAllCategoryItems(items, cartItems, setCartItems) {
           <p className="text-md pb-4">{item.shortdes}</p>
         </div>
         <div className="w-full flex flex-row justify-between items-center">
-          <button
-            className="bg-green-600 text-white mr-1 w-1/2 min-w-fit flex flex-row justify-center items-center p-1 shadow-md"
-          >
+          <Link to={path}>
+            <button
+              className="bg-green-600 text-white mr-1 w-1/2 min-w-fit flex flex-row justify-center items-center p-1 shadow-md"
+            >
             Read More
-          </button>
+            </button>
+          </Link>
           <button
             className="bg-green-600 text-white ml-1 w-1/2 min-w-fit flex flex-row justify-center items-center p-1 shadow-md"
             onClick={() => addItemToCart(item, cartItems, setCartItems)}
@@ -34,44 +41,6 @@ export function renderAllCategoryItems(items, cartItems, setCartItems) {
   return rows;
 }
 
-export function sortItems(items, sortMethod) {
-  const sortedItems = [...items];
-    if (sortMethod === "default") {
-      return sortedItems;
-    }
-    else if (sortMethod === "Price-low-high") {
-      sortedItems.sort((a, b) => (a.price > b.price ? 1 : -1))
-      return sortedItems;
-    }
-    else if (sortMethod === "Price-high-low") {
-      sortedItems.sort((a, b) => (a.price > b.price ? -1 : 1))
-      return sortedItems;
-    }
-    else if (sortMethod === "Alpha-a-z") {
-      sortedItems.sort((a, b) => (a.name > b.name ? 1 : -1))
-      return sortedItems;
-    }
-    else if (sortMethod === "Alpha-z-a") {
-      sortedItems.sort((a, b) => (a.name > b.name ? -1 : 1))
-      return sortedItems;
-    }
-
-}
-
-export function removeItemFromCart(item, cartItems, setCartItems) {
-  const newArray = [...cartItems];
-
-  for (let i = 0; i < newArray.length; i++) {
-    if (newArray[i].name === item.name) {
-      newArray[i].quantity--;
-    }
-    if (newArray[i].quantity === 0) {
-      newArray.splice(i, 1);
-    }
-  }
-
-  setCartItems(newArray);
-}
 
 export function addItemToCart(item, cartItems, setCartItems) {
   const newArray = [...cartItems];
@@ -96,9 +65,150 @@ export function addItemToCart(item, cartItems, setCartItems) {
   }
 
   setCartItems(newArray);
-  console.log(cartItems);
+ }
+
+
+export function removeItemFromCart(item, cartItems, setCartItems) {
+  const newArray = [...cartItems];
+
+  for (let i = 0; i < newArray.length; i++) {
+    if (newArray[i].name === item.name) {
+      newArray[i].quantity--;
+    }
+    if (newArray[i].quantity === 0) {
+      newArray.splice(i, 1);
+    }
+  }
+
+  setCartItems(newArray);
 }
+
+
+// add single item to single product page
+export function findItem(_id) {
+  let item = {};
+  let allItems = [];
+  allItems = getAllItemsFromDb();
+  console.log(allItems);
+
+  for (const product of allItems) {
+    if (_id === product._id) {
+      item = product;
+    }
+  }
+  return item;
+}
+
+
+export function renderItemDetailsPage(selectedItem, cartItems, setCartItems) {
+  return (
+    <>
+      <div className="flex items-center justify-center mt-5 ">
+        <h1 className=" text-xl ">{selectedItem.name}</h1>
+      </div>
+      <div className=" w-full ">
+        <img
+          className=" w-full p-3"
+          src={selectedItem.image}
+          alt="Ballet dancer on a street"
+        />
+      </div>
+
+      <div className="flex items-center flex-col  p-3 ">
+        <h1 className=" text-2xl my-2.5"> Welcome to {selectedItem.company}</h1>
+        <div className=" flex p-3 bg-gray-200 w-3/4 items-center justify-between">
+          <h2 className="text-center"> Quick Details </h2>
+        </div>
+        <span className=" my-2.5 ">${selectedItem.price}</span>
+        <p className="text-center ">{selectedItem.main_description}</p>
+      </div>
+    </>
+  );
+}
+
+export function renderOrderItems(orders) {
+  let rows = [];
+  let cartRows = [];
+  orders.forEach((order) => {
+    let timestamp = order.timestamp;
+    let total = order.total;
+    let id = order._id
+    let cartArray = order.cart;
+    for (let i =0; i < cartArray.length; i++) {
+      cartRows.push(
+        <p>{cartArray[i].name}</p>,
+        <p>{cartArray[i].price}</p>,
+        <p>{cartArray[i].quantity}</p>
+      )}
+    rows.push(
+    <p>{timestamp}</p>,
+    <p>{total}</p>,
+    <p>{id}</p>,
+    cartRows
+    )
+  }); 
+  return rows;
+}
+
+
+export function sortItems(items, sortMethod) {
+  const sortedItems = [...items];
+
+    if (sortMethod === "default") {
+      return sortedItems;
+    }
+    else if (sortMethod === "Price-low-high") {
+      sortedItems.sort((a, b) => (a.price > b.price ? 1 : -1))
+      return sortedItems;
+    }
+    else if (sortMethod === "Price-high-low") {
+      sortedItems.sort((a, b) => (a.price > b.price ? -1 : 1))
+      return sortedItems;
+    }
+    else if (sortMethod === "Alpha-a-z") {
+      sortedItems.sort((a, b) => (a.name > b.name ? 1 : -1))
+      return sortedItems;
+    }
+    else if (sortMethod === "Alpha-z-a") {
+      sortedItems.sort((a, b) => (a.name > b.name ? -1 : 1))
+      return sortedItems;
+    }
+
+}
+
 
 export function toggleHidden(target) {
   document.getElementById(target).classList.toggle("hidden");
+}
+
+
+export function renderLoginLogoutBtn(
+  currentUser,
+  setCurrentUser,
+  isMobileMenuOpen,
+  setisMobileMenuOpen
+) {
+  const logOutUser = () => {
+    setisMobileMenuOpen(false);
+    setCurrentUser({ isLoggedIn: false });
+  };
+  const rows = [];
+  if (currentUser.isLoggedIn) {
+    rows.push(
+      <NavLink to="/" className="" onClick={() => logOutUser()}>
+        <h2>Log out</h2>
+      </NavLink>
+    );
+  } else {
+    rows.push(
+      <NavLink
+        to="/login"
+        className=""
+        onClick={() => setisMobileMenuOpen(false)}
+      >
+        <h2>Log in</h2>
+      </NavLink>
+    );
+  }
+  return rows;
 }
