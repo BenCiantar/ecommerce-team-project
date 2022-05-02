@@ -124,7 +124,7 @@ export function renderItemDetailsPage(selectedItem, cartItems, setCartItems) {
       </div>
     </>
   );
-
+}
 
 export function renderOrderItems(orders) {
   let rows = [];
