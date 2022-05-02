@@ -14,9 +14,11 @@ const Adventures = ({ cartItems, setCartItems }) => {
 
   return (
     <div className="bg-background min-h-screen ">
-        <Sort items={items} setItems={setItems} />
-      <div className =" grid grid-cols-1 gap-5 p-5 md:grid-cols-3 lg:grid-cols-4 ">
-        {rows}
+      <div className=" w-full self-center m-auto ">
+          <Sort items={items} setItems={setItems} />
+        <div className =" grid grid-cols-1 gap-5 p-2 md:grid-cols-3 md:p-5 lg:grid-cols-4 lg:p-5">
+          {rows}
+        </div>
       </div>
     </div>
   );

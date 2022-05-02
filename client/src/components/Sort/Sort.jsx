@@ -12,8 +12,8 @@ const Sort = ({items, setItems}) => {
     }
 
     return (
-<div className=" flex self-center justify-center md:justify-start items-center m-2 ">
-    <select name="sort-menu" id="sort-menu" className=" w-3/4 sm:w-1/3 md:w-1/3 lg:w-1/4 h-8 px-2 rounded bg-black text-white " onChange={handleChange}>
+<div className=" flex self-center justify-center md:justify-start items-center pt-2 ">
+    <select name="sort-menu" id="sort-menu" className=" w-3/4 sm:w-1/3 md:w-1/4 lg:w-1/5 h-8 px-2 md:ml-6 rounded bg-black text-white " onChange={handleChange}>
         <option value="default" defaultValue>Sort items</option>
         <option value="Price-high-low">Price - High to low</option>
         <option value="Price-low-high">Price - Low to high</option>
