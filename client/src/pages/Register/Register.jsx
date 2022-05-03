@@ -2,9 +2,10 @@ import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+
 const Register = ({ currentUser, setCurrentUser }) => {
   const navigate = useNavigate();
-  function registerNewUser(e) {
+  async function registerNewUser(e) 
     e.preventDefault();
 
     let newUser = {
@@ -13,25 +14,29 @@ const Register = ({ currentUser, setCurrentUser }) => {
       _id: e.target[2].value,
       password: e.target[3].value,
     };
-    axios
-      .post("http://localhost:8080/users", newUser)
-      .then((res) => {
-        setCurrentUser(res.data);
-        console.log(res.data);
-        console.log(currentUser);
-        navigate("/");
-        //if server is reachible but the response doesn't contain data
-        if (res.request.statusText !== "OK") {
-          throw Error("couldn't fetch");
-        }
-      })
-      //if server is not reachible
-      .catch((e) => {
-        console.log(e.message);
-        alert("Error:", e.message);
-      });
-    console.log(currentUser);
+
+    try {
+      axios
+        .post("http://localhost:8080/users", newUser)
+        .then((res) => {
+          setCurrentUser(res.data);
+          navigate("/");
+          if (res.status !== 200) {
+            console.log(res);
+            throw Error("Error", res);
+          }
+          if (res.status === 200) {
+            alert("Registered!");
+          }
+        })
+        .catch(() => {
+          alert("Error: server is not reachible");
+        });
+    } catch (error) {
+      console.log(error);
+    }
   }
+
   return (
     <main className="flex justify-center items-center my-8 ">
       <section className="flex flex-col shadow-full w-4/5 sm:w-3/4 md:w-1/2 lg:w-1/3 h-4/5 justify-center items-center py-8">
