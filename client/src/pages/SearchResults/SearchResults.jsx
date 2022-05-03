@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { renderAllCategoryItems } from "../../scripts/tools";
 import { getFilteredItemsFromDb } from '../../scripts/api';
 
