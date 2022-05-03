@@ -3,9 +3,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 
-const Register = ({ currentUser, setCurrentUser }) => {
+const Register = ({ setCurrentUser }) => {
   const navigate = useNavigate();
-  async function registerNewUser(e) 
+  async function registerNewUser(e) {
     e.preventDefault();
 
     let newUser = {
