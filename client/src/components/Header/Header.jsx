@@ -43,10 +43,9 @@ const Header = (props) => {
               <li className="menu-list-item px-3 ">Culture</li>
             </NavLink>
           </ul>
-          <AiOutlineShoppingCart
-            className=" w-10 h-10 pr-3 "
-            onClick={() => toggleHidden("cart")}
-          />
+          <button className=" w-10 h-10 pr-3 " onClick={() => toggleHidden("cart")}>
+            <AiOutlineShoppingCart size={23} />
+          </button>
           <button
             onClick={() => {
               showMobileMenu();
