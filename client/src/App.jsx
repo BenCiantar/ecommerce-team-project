@@ -45,7 +45,9 @@ function App() {
               <Adventures cartItems={cartItems} setCartItems={setCartItems} />
             }
           />
-          <Route path="/culture" element={<Culture />} />
+          <Route path="/culture" element={<Culture cartItems={cartItems} setCartItems={setCartItems}/>
+          } 
+          />
           <Route path="/orders" element={<Orders />} />
           <Route path="/searchresults/:searchInput" element={<SearchResults />} />
           <Route path="*" element={<BadURL404 />} />
