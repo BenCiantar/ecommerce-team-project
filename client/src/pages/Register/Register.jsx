@@ -17,9 +17,11 @@ const Register = ({ currentUser, setCurrentUser }) => {
       .post("http://localhost:8080/users", newUser)
       .then((res) => {
         setCurrentUser(res.data);
+        console.log(res.data);
+        console.log(currentUser);
         navigate("/");
         //if server is reachible but the response doesn't contain data
-        if (!res.ok) {
+        if (res.request.statusText !== "OK") {
           throw Error("couldn't fetch");
         }
       })
@@ -28,6 +30,7 @@ const Register = ({ currentUser, setCurrentUser }) => {
         console.log(e.message);
         alert("Error:", e.message);
       });
+    console.log(currentUser);
   }
   return (
     <main className="flex justify-center items-center my-8 ">
