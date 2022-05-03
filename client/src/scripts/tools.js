@@ -1,4 +1,4 @@
-import { FaShoppingCart, FaDollarSign } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import { getAllItemsFromDb } from "./api";
 
