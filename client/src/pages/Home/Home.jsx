@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <main className="flex justify-center mt-4">
+    <main className="flex justify-center mt-24">
       <Link to="/adventures">
         <div className=" m-1 w-44 relative overflow-hidden rounded-md shadow-lg cursor-pointer flex justify-center items-center">
           <img
