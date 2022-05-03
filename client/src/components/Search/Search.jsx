@@ -47,8 +47,6 @@ const Search = ({setSelectedItem}) => {
         const searchInput = e.target.search.value;
 
         navigate(`/searchresults/${searchInput}`);
-
-        navigate(0);
     }
 
 
