@@ -71,7 +71,6 @@ export function getFilteredItemsFromDb(query, setResults) {
 // }
 
 export function findItemInDbById(id, setSelectedItem) {
-  console.log(id);
   fetch(`${API_BASE_URL}/item-by-id/${id}`, {
     headers: {
       "Content-Type": "application/json",

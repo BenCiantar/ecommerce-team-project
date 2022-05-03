@@ -21,7 +21,7 @@ const Cart = ({ cartItems, setCartItems }) => {
         <section className=" ">
           <h1>Your shopping cart</h1>
           {cartItems.map((obj) => (
-            <div className=" flex flex-row justify-between items-center bg-slate-200 m-4">
+            <div key={`cartItem${obj.name}`} className=" flex flex-row justify-between items-center bg-slate-200 m-4">
               <img className="w-28" src={obj.image} alt="" />
               <p>{obj.name}</p>
               <div className="flex flex-row justify-between items-center">
