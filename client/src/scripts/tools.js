@@ -155,23 +155,42 @@ export function renderItemDetailsPage(selectedItem, cartItems, setCartItems) {
 
 export function renderOrderItems(orders) {
   let rows = [];
-  let cartRows = [];
   orders.forEach((order) => {
     let timestamp = order.timestamp;
     let total = order.total;
     let id = order._id
     let cartArray = order.cart;
-    for (let i =0; i < cartArray.length; i++) {
-      cartRows.push(
-        <p>{cartArray[i].name}</p>,
-        <p>{cartArray[i].price}</p>,
-        <p>{cartArray[i].quantity}</p>
+    let invoiceRows = [];
+    
+    for (let i = 0; i < cartArray.length; i++) {
+      invoiceRows.push(
+        <div>
+          <section>Product: {cartArray[i].name}</section>
+          <section>Price: {cartArray[i].price}SEK</section>
+          <section>Quantity: {cartArray[i].quantity}</section>
+          <br />
+        </div>
       )}
+
     rows.push(
-    <p>{timestamp}</p>,
-    <p>{total}</p>,
-    <p>{id}</p>,
-    cartRows
+      <div className =" grid grid-cols-1 gap-5 p-5 md:grid-cols-3 lg:grid-cols-4 ">
+        <div>
+          <section>#{id}</section>
+        </div>
+        <div>
+          <section>{timestamp}</section>
+        </div>
+        <div>
+          <section>{total}SEK</section>
+        </div>
+        <div>
+          {invoiceRows}
+        </div>
+        
+        </div>,
+        <div>
+          <hr />
+        </div>
     )
   }); 
   return rows;
