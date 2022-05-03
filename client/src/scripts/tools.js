@@ -70,6 +70,8 @@ export function renderLiveSearchItems(items, setSelectedItem){
 }
 
 export function addItemToCart(item, cartItems, setCartItems) {
+
+
   const newArray = [...cartItems];
   let itemExists = false;
 
@@ -90,6 +92,8 @@ export function addItemToCart(item, cartItems, setCartItems) {
   }
 
   setCartItems(newArray);
+
+
  }
 
 
@@ -229,7 +233,7 @@ export function toggleHidden(target) {
 export function renderLoginLogoutBtn(
   currentUser,
   setCurrentUser,
-  isMobileMenuOpen,
+  handleClick,
   setisMobileMenuOpen
 ) {
   const logOutUser = () => {
@@ -249,7 +253,7 @@ export function renderLoginLogoutBtn(
         to="/login"
         key={"logInBtn"}
         className=""
-        onClick={() => setisMobileMenuOpen(false)}
+        onClick={handleClick}
       >
         <h2>Log in</h2>
       </NavLink>
