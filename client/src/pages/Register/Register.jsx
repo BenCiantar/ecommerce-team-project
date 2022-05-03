@@ -2,27 +2,35 @@ import React from "react";
 import axios from "axios";
 
 const Register = () => {
-  function registerNewUser(e) {
+  async function registerNewUser(e) {
     e.preventDefault();
 
     let newUser = {
       _id: e.target[0].value,
       password: e.target[1].value,
     };
-    axios
-      .post("http://localhost:8080/users", newUser)
-      .then((res) => {
-        //if server is reachible but the response doesn't contain data
-        if (!res.ok) {
-          throw Error("couldn't fetch");
-        }
-      })
-      //if server is not reachible
-      .catch((e) => {
-        console.log(e.message);
-        alert("Error:", e.message);
-      });
+
+    try {
+      axios
+        .post("http://localhost:8080/users", newUser)
+        .then((res) => {
+          console.log(res);
+          if (res.status !== 200) {
+            console.log(res);
+            throw Error("Error", res);
+          }
+          if (res.status === 200) {
+            alert("Registered!");
+          }
+        })
+        .catch(() => {
+          alert("Error: server is not reachible");
+        });
+    } catch (error) {
+      console.log(error);
+    }
   }
+
   return (
     <div>
       <form onSubmit={registerNewUser}>
