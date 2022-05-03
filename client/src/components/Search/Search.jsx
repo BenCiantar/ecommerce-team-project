@@ -48,7 +48,7 @@ const Search = ({setSelectedItem}) => {
 
         navigate(`/searchresults/${searchInput}`);
 
-        window.location.reload();
+        window.location = window.location;
     }
 
 
