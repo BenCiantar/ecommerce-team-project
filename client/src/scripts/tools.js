@@ -87,7 +87,6 @@ export function addItemToCart(item, cartItems, setCartItems) {
       quantity: 1,
       price: item.price,
     });
-    console.log(item, "does not exist");
   }
 
   setCartItems(newArray);
