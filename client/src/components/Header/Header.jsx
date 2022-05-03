@@ -92,7 +92,7 @@ const Header = (props) => {
         <Cart {...props} />
       </nav>
       <section className="w-full h-8 bg-white flex flex-row justify-end items-center pr-6">
-        <Search setSelectedItem={ props.setSelectedItem } />
+        <Search setSelectedItem={ props.setSelectedItem } handleClick={handleClick} />
       </section>
     </header>
   );
