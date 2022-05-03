@@ -234,7 +234,7 @@ export function toggleHidden(target) {
 export function renderLoginLogoutBtn(
   currentUser,
   setCurrentUser,
-  isMobileMenuOpen,
+  handleClick,
   setisMobileMenuOpen
 ) {
   const logOutUser = () => {
@@ -254,7 +254,7 @@ export function renderLoginLogoutBtn(
         to="/login"
         key={"logInBtn"}
         className=""
-        onClick={() => setisMobileMenuOpen(false)}
+        onClick={handleClick}
       >
         <h2>Log in</h2>
       </NavLink>

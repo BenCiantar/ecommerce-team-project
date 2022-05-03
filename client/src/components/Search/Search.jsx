@@ -34,7 +34,7 @@ const Search = ({setSelectedItem}) => {
         }
     }
 
-    const handleBlur = (e) => {
+    const handleBlur = () => {
         setTimeout(() => {
             if (!document.getElementById('live-search').classList.contains('hidden')){
                 toggleHidden('live-search');
