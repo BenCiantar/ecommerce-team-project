@@ -3,14 +3,14 @@ import { useEffect, useState } from "react";
 import { renderAllCategoryItems } from "../../scripts/tools";
 import { Sort } from "../../components";
 
-const Culture = ({ cartItems, setCartItems }) => {
+const Culture = ({ cartItems, setCartItems, currentUser }) => {
   const [items, setItems] = useState([]);
   
   useEffect(() => {
     getItemsFromDb("Culture", setItems);
   }, []);
 
-  let rows = renderAllCategoryItems(items, cartItems, setCartItems);
+  let rows = renderAllCategoryItems(items, cartItems, setCartItems, currentUser);
 
   return (
     <div className="bg-background min-h-screen ">

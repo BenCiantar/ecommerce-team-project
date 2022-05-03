@@ -42,10 +42,11 @@ function App() {
           <Route
             path="/adventures"
             element={
-              <Adventures cartItems={cartItems} setCartItems={setCartItems} />
+              <Adventures cartItems={cartItems} setCartItems={setCartItems} currentUser={currentUser}/>
             }
           />
-          <Route path="/culture" element={<Culture cartItems={cartItems} setCartItems={setCartItems}/>
+            <Route path="/culture" 
+            element={<Culture cartItems={cartItems} setCartItems={setCartItems} currentUser={currentUser}/>
           } 
           />
           <Route path="/orders" element={<Orders />} />
@@ -62,6 +63,7 @@ function App() {
                 setCartItems={setCartItems}
                 selectedItem={selectedItem}
                 setSelectedItem={setSelectedItem}
+                currentUser={currentUser}
               />
             }
           />
