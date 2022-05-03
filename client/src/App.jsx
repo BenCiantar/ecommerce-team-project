@@ -42,16 +42,17 @@ function App() {
           <Route
             path="/adventures"
             element={
-              <Adventures cartItems={cartItems} setCartItems={setCartItems} />
+              <Adventures cartItems={cartItems} setCartItems={setCartItems} currentUser={currentUser}/>
             }
           />
-          <Route path="/culture" element={<Culture cartItems={cartItems} setCartItems={setCartItems}/>
+            <Route path="/culture" 
+            element={<Culture cartItems={cartItems} setCartItems={setCartItems} currentUser={currentUser}/>
           } 
           />
           <Route path="/orders" element={<Orders />} />
           <Route path="/searchresults/:searchInput" element={<SearchResults />} />
           <Route path="*" element={<BadURL404 />} />
-          <Route path="/product/:id" element={<ProductInfo cartItems={cartItems} setCartItems={setCartItems} selectedItem={selectedItem} setSelectedItem={setSelectedItem} />} />
+          <Route path="/product/:id" element={<ProductInfo cartItems={cartItems} setCartItems={setCartItems} selectedItem={selectedItem} setSelectedItem={setSelectedItem} currentUser={currentUser}/>} />
           <Route path="/register" element={<Register />} />
         </Routes>
       </BrowserRouter>
