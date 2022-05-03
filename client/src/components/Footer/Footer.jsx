@@ -22,7 +22,7 @@ const Footer = () => {
         <Link to="/">Home</Link>
         <Link to="/adventures">Adventures</Link>
         <Link to="/culture">Culture</Link>
-        <Link to="/">Order Administration</Link>
+        <Link to="/orders">Order Administration</Link>
       </div>
       <div className="text-xs xl:text-base px-6 pb-4">
         <h3 className="font-semibold text-white mb-2">Shop</h3>
