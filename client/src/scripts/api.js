@@ -103,12 +103,13 @@ export function getOrdersFromDb(setOrders) {
       });
   }
 
-export function placeOrder(cartItems, setCartItems, totalPrice) {
+export function placeOrder(cartItems, setCartItems, totalPrice, currentUser) {
 
     const newOrderDetails = {
         "cart": cartItems,
         "total": totalPrice,
-        "timestamp": new Date()
+        "timestamp": new Date(),
+        "user": currentUser._id
     }
   
     fetch(`${API_BASE_URL}/place-order`, {

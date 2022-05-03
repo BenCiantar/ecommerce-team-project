@@ -2,7 +2,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import { getAllItemsFromDb } from "./api";
 
-export function renderAllCategoryItems(items, cartItems, setCartItems) {
+export function renderAllCategoryItems(items, cartItems, setCartItems, currentUser) {
   let rows = [];
   
   items.forEach((item, i) => {
@@ -29,7 +29,7 @@ export function renderAllCategoryItems(items, cartItems, setCartItems) {
           </Link>
           <button
             className="btn-primary ml-1"
-            onClick={() => addItemToCart(item, cartItems, setCartItems)}
+            onClick={() => addItemToCart(item, cartItems, setCartItems, currentUser)}
           >
             <FaShoppingCart /> <p className="ml-2">{item.price} kr</p>
           </button>
@@ -69,9 +69,8 @@ export function renderLiveSearchItems(items, setSelectedItem){
   return rows;
 }
 
-export function addItemToCart(item, cartItems, setCartItems) {
-
-
+export function addItemToCart(item, cartItems, setCartItems, currentUser) {
+  if (currentUser.isLoggedIn){
   const newArray = [...cartItems];
   let itemExists = false;
 
@@ -92,10 +91,10 @@ export function addItemToCart(item, cartItems, setCartItems) {
   }
 
   setCartItems(newArray);
-
-
+ } else {
+   alert("You need to be logged in to add an item to cart");
  }
-
+}
 
 export function removeItemFromCart(item, cartItems, setCartItems) {
   const newArray = [...cartItems];
@@ -129,7 +128,7 @@ export function findItem(_id) {
 }
 
 
-export function renderItemDetailsPage(selectedItem, cartItems, setCartItems) {
+export function renderItemDetailsPage(selectedItem, cartItems, setCartItems, currentUser) {
   return (
     <>
       <div className="flex items-center justify-center mt-5 ">
@@ -160,13 +159,14 @@ export function renderOrderItems(orders) {
   orders.forEach((order) => {
     let timestamp = order.timestamp;
     let total = order.total;
-    let id = order._id
+    let id = order._id;
     let cartArray = order.cart;
     let invoiceRows = [];
-    
+    let email = order.user;
+ 
     for (let i = 0; i < cartArray.length; i++) {
       invoiceRows.push(
-        <div key={`cart${cartArray[i]._id}`}>
+        <div key={`cart${cartArray[i].name}`}>
           <section>Product: {cartArray[i].name}</section>
           <section>Price: {cartArray[i].price}SEK</section>
           <section>Quantity: {cartArray[i].quantity}</section>
@@ -177,7 +177,8 @@ export function renderOrderItems(orders) {
     rows.push(
       <div key={`order${id}`} className =" grid grid-cols-1 gap-5 p-5 md:grid-cols-3 lg:grid-cols-4 ">
         <div>
-          <section>#{id}</section>
+          <section>#{id} <br/> {email} </section>
+
         </div>
         <div>
           <section>{timestamp}</section>
@@ -190,7 +191,7 @@ export function renderOrderItems(orders) {
         </div>
         
         </div>,
-        <div>
+        <div key={`hr${id}`}>
           <hr />
         </div>
     )
