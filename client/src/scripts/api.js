@@ -1,4 +1,3 @@
-import { FaTools } from "react-icons/fa";
 import { API_BASE_URL } from "../config";
 
 export function getItemsFromDb(category, setItems) {
