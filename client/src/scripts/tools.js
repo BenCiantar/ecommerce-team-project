@@ -141,6 +141,7 @@ export function renderOrderItems(orders) {
           <section>Product: {cartArray[i].name}</section>
           <section>Price: {cartArray[i].price}SEK</section>
           <section>Quantity: {cartArray[i].quantity}</section>
+          <br />
         </div>
       )}
 
@@ -160,7 +161,9 @@ export function renderOrderItems(orders) {
         </div>
         
         </div>,
-        <div><hr /></div>
+        <div>
+          <hr />
+        </div>
     )
   }); 
   return rows;
