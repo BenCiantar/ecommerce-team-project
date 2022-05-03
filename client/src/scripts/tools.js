@@ -159,13 +159,14 @@ export function renderOrderItems(orders) {
   orders.forEach((order) => {
     let timestamp = order.timestamp;
     let total = order.total;
-    let id = order._id
+    let id = order._id;
     let cartArray = order.cart;
     let invoiceRows = [];
-    
+    let email = order.user;
+ 
     for (let i = 0; i < cartArray.length; i++) {
       invoiceRows.push(
-        <div key={`cart${cartArray[i]._id}`}>
+        <div key={`cart${cartArray[i].name}`}>
           <section>Product: {cartArray[i].name}</section>
           <section>Price: {cartArray[i].price}SEK</section>
           <section>Quantity: {cartArray[i].quantity}</section>
@@ -176,7 +177,8 @@ export function renderOrderItems(orders) {
     rows.push(
       <div key={`order${id}`} className =" grid grid-cols-1 gap-5 p-5 md:grid-cols-3 lg:grid-cols-4 ">
         <div>
-          <section>#{id}</section>
+          <section>#{id} <br/> {email} </section>
+
         </div>
         <div>
           <section>{timestamp}</section>
@@ -189,7 +191,7 @@ export function renderOrderItems(orders) {
         </div>
         
         </div>,
-        <div>
+        <div key={`hr${id}`}>
           <hr />
         </div>
     )
