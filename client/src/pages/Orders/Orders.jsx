@@ -14,7 +14,7 @@ const Orders = () => {
   return (
      <>
       <div className =" grid grid-cols-1 gap-5 p-5 md:grid-cols-3 lg:grid-cols-4 font-semibold text-stone-400">
-        <h2>Order Number</h2>
+        <h2>Order Number <br/> User Email</h2>
         <h2>Order Date</h2>
         <h2>Total Amount</h2>
         <h2>Order Details</h2>
@@ -31,3 +31,5 @@ const Orders = () => {
 };
 
 export default Orders
+
+

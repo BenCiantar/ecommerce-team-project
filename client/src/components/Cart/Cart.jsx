@@ -6,7 +6,7 @@ import {
 import { placeOrder } from "../../scripts/api";
 
 
-const Cart = ({ cartItems, setCartItems }) => {
+const Cart = ({ cartItems, setCartItems, currentUser }) => {
   const totalPrice = cartItems.reduce(
     (sum, obj) => obj.price * obj.quantity + sum,
     0
@@ -35,7 +35,7 @@ const Cart = ({ cartItems, setCartItems }) => {
                 <p>{obj.quantity}</p>
                 <button
                   onClick={() => {
-                    addItemToCart(obj, cartItems, setCartItems);
+                    addItemToCart(obj, cartItems, setCartItems, currentUser);
                   }}
                 >
                   +
@@ -47,7 +47,7 @@ const Cart = ({ cartItems, setCartItems }) => {
           <div className="">Total: {totalPrice} kr</div>
           <button
             className="bg-green-500 text-white p-2 rounded-md shadow-md"
-            onClick={() => placeOrder(cartItems, setCartItems, totalPrice)}
+            onClick={() => placeOrder(cartItems, setCartItems, totalPrice, currentUser)}
           >
             Place Order
           </button>

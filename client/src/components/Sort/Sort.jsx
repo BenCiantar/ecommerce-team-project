@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { AiOutlineArrowUp } from "react-icons/ai";
+import React from "react";
 import { sortItems } from "../../scripts/tools"
 
 
