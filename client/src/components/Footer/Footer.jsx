@@ -37,7 +37,7 @@ const Footer = () => {
           Made with love by Team OGs: Ben, Chelsea, Elina, Felix, Richi & Tilda
           &#60;3 . All rights reserved.
         </p>
-        <div className="flex flex-row justify-start text-white">
+        <div className="flex flex-row justify-start text-white mt-2">
           <AiFillTwitterSquare />
           <AiFillFacebook className="mx-2" />
           <AiFillInstagram />
