@@ -19,7 +19,8 @@ const Register = ({ setCurrentUser }) => {
       axios
         .post("http://localhost:8080/users", newUser)
         .then((res) => {
-          setCurrentUser(res.data);
+          newUser = {isLoggedIn: true};
+          setCurrentUser(newUser);
           navigate("/");
           if (res.status !== 200) {
             console.log(res);
