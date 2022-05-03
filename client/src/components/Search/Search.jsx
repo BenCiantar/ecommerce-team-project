@@ -56,7 +56,7 @@ const Search = ({setSelectedItem}) => {
         <>
             <form className="bg-white pb-1 flex flex-row justify-end items-center" onFocus={handleFocus} onBlur={handleBlur} onChange={handleChange} onSubmit={handleSubmit}>
                 <label htmlFor="search"></label>
-                <input type="text" placeholder="Search" name="search" className="bg-white w-22 h-6 p-1 border border-slate-300" required />
+                <input type="text" placeholder="Search" name="search" className="bg-white w-14 h-6 p-1 border border-slate-300 md:w-32 lg:w-40" required />
 
                 <button type="submit" value="submit" className="h-6 w-6 bg-white p-1 border-t border-r border-b border-slate-300"><FaSistrix /></button>
             </form>
