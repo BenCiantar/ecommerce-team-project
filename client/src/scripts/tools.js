@@ -9,7 +9,7 @@ export function renderAllCategoryItems(items, cartItems, setCartItems) {
     const path = `/product/${item._id}`;
     
     rows.push(
-      <div key={i} className="w-full h-96 p-3 bg-white border-2 flex flex-col justify-start items-center">
+      <div key={`product${item._id}`} className="w-full h-96 p-3 bg-white border-2 flex flex-col justify-start items-center">
         <div className="w-full h-1/2 pb-2">
           <img src={item.image} alt={item.alt} className="w-full h-full object-cover" />
         </div>
@@ -57,7 +57,7 @@ export function renderLiveSearchItems(items, setSelectedItem){
     const path = `/product/${item._id}`;
 
     rows.push(
-      <Link to={path} >
+      <Link to={path} key={`liveSearch${item._id}`} >
         <div onClick={() => setSelectedItem(item)} className="h-12 w-full p-8 flex flex-row justify-between items-center border-b border-l border-r border-slate-400">
           <img className="w-14" src={item.image} alt={item.alt}></img>
           <p className="w-18">{item.name}</p>
@@ -164,7 +164,7 @@ export function renderOrderItems(orders) {
     
     for (let i = 0; i < cartArray.length; i++) {
       invoiceRows.push(
-        <div>
+        <div key={`cart${cartArray[i]._id}`}>
           <section>Product: {cartArray[i].name}</section>
           <section>Price: {cartArray[i].price}SEK</section>
           <section>Quantity: {cartArray[i].quantity}</section>
@@ -173,7 +173,7 @@ export function renderOrderItems(orders) {
       )}
 
     rows.push(
-      <div className =" grid grid-cols-1 gap-5 p-5 md:grid-cols-3 lg:grid-cols-4 ">
+      <div key={`order${id}`} className =" grid grid-cols-1 gap-5 p-5 md:grid-cols-3 lg:grid-cols-4 ">
         <div>
           <section>#{id}</section>
         </div>
@@ -241,7 +241,7 @@ export function renderLoginLogoutBtn(
   const rows = [];
   if (currentUser.isLoggedIn) {
     rows.push(
-      <NavLink to="/" className="" onClick={() => logOutUser()}>
+      <NavLink key={"logOutBtn"} to="/" className="" onClick={() => logOutUser()}>
         <h2>Log out</h2>
       </NavLink>
     );
@@ -249,6 +249,7 @@ export function renderLoginLogoutBtn(
     rows.push(
       <NavLink
         to="/login"
+        key={"logInBtn"}
         className=""
         onClick={() => setisMobileMenuOpen(false)}
       >
