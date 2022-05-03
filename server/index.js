@@ -35,9 +35,10 @@ const requestLogger = (request, response, next) => {
   next();
 };
 
-app.use(requestLogger);
+app.use(cors({origin: "*"}));
 app.use(express.json());
-app.use(cors({ origin: "*" }));
+
+app.use(requestLogger);
 
 //get item collection
 app.get("/items", async (request, response) => {
