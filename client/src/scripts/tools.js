@@ -133,10 +133,10 @@ export function renderOrderItems(orders) {
     let total = order.total;
     let id = order._id
     let cartArray = order.cart;
-    let cartRows = [];
-    console.log(cartArray);
-    for (let i =0; i < cartArray.length; i++) {
-      cartRows.push(
+    let invoiceRows = [];
+    
+    for (let i = 0; i < cartArray.length; i++) {
+      invoiceRows.push(
         <div>
           <section>Product: {cartArray[i].name}</section>
           <section>Price: {cartArray[i].price}SEK</section>
@@ -157,7 +157,7 @@ export function renderOrderItems(orders) {
           <section>{total}SEK</section>
         </div>
         <div>
-          {cartRows}
+          {invoiceRows}
         </div>
         
         </div>,
