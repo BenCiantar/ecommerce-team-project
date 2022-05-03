@@ -9,7 +9,7 @@ const SearchResults = () => {
 
     useEffect(() => {
         getFilteredItemsFromDb(searchInput, setResults);
-    }, []);
+    }, []); // eslint-disable-line
 
     rows = renderAllCategoryItems(results);
 
