@@ -78,7 +78,6 @@ export function addItemToCart(item, cartItems, setCartItems) {
       itemExists = true;
       product.quantity++;
     }
-    console.log(item, "exist", product.quantity);
   }
 
   if (!itemExists) {
