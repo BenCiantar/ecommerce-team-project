@@ -51,7 +51,7 @@ function App() {
           />
           <Route path="/orders" element={<Orders />} />
           <Route
-            path="/searchresults/:searchInput"
+            path="/searchresults/query"
             element={<SearchResults />}
           />
           <Route path="*" element={<BadURL404 />} />
