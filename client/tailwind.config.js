@@ -7,7 +7,11 @@ module.exports = {
       },
       colors: {
         background: "#f2f2f2",
+        footer: "#550693",
       },
+    },
+    maxWidth: {
+      "160px": "160px",
     },
   },
   plugins: [],
