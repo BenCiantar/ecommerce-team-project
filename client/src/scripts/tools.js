@@ -76,6 +76,7 @@ export function renderLiveSearchItems(items, setSelectedItem){
 }
 
 export function addItemToCart(item, cartItems, setCartItems, currentUser) {
+  console.log(cartItems);
   if (currentUser.isLoggedIn){
   const newArray = [...cartItems];
   let itemExists = false;
@@ -180,13 +181,13 @@ export function renderItemDetailsPage(selectedItem, cartItems, setCartItems, ite
               </article>
 
               {/* Add to cart */}
-              {/* <button
+              <button
                 className="bg-green-600 text-white mt-5  w-48 min-w-fit flex flex-row justify-center items-center p-1 shadow-md md:mr-14"
-                onClick={() => addItemToCart(item, cartItems, setCartItems)}
+                onClick={() => addItemToCart(item, cartItems, setCartItems, currentUser)}
               >
                 <FaShoppingCart />{" "}
                 <p className="ml-2">{selectedItem.price} kr</p>
-              </button> */}
+              </button>
             </div>
 
             {/* small images */}

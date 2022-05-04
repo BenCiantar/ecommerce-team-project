@@ -10,7 +10,7 @@ const ProductInfo = ({cartItems, setCartItems, selectedItem, setSelectedItem, cu
     findItemInDbById(id, setSelectedItem);
   }, [id]); //eslint-disable-line
 
-  let rows = renderItemDetailsPage(selectedItem, cartItems, setCartItems, currentUser);
+  let rows = renderItemDetailsPage(selectedItem, cartItems, setCartItems, selectedItem, currentUser);
 
   return <main>{rows}</main>;
 };
