@@ -1,5 +1,5 @@
 import React from "react";
-import { Header } from "./components/index";
+import { Header, Footer } from "./components/index";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {
   Home,
@@ -19,7 +19,7 @@ function App() {
   const [selectedItem, setSelectedItem] = React.useState([]);
 
   return (
-    <div>
+    <div className="h-screen">
       <BrowserRouter>
         <Header
           cartItems={cartItems}
@@ -42,12 +42,22 @@ function App() {
           <Route
             path="/adventures"
             element={
-              <Adventures cartItems={cartItems} setCartItems={setCartItems} currentUser={currentUser}/>
+              <Adventures
+                cartItems={cartItems}
+                setCartItems={setCartItems}
+                currentUser={currentUser}
+              />
             }
           />
-            <Route path="/culture" 
-            element={<Culture cartItems={cartItems} setCartItems={setCartItems} currentUser={currentUser}/>
-          } 
+          <Route
+            path="/culture"
+            element={
+              <Culture
+                cartItems={cartItems}
+                setCartItems={setCartItems}
+                currentUser={currentUser}
+              />
+            }
           />
           <Route path="/orders" element={<Orders />} />
           <Route
@@ -77,6 +87,7 @@ function App() {
             }
           />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );

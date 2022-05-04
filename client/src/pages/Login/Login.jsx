@@ -15,7 +15,6 @@ const Login = ({ currentUser, setCurrentUser }) => {
       .post("http://localhost:8080/login", loginDetails)
       .then((res) => {
         setCurrentUser(res.data);
-        console.log(currentUser);
         navigate("/");
         //if server is reachible but the response doesn't contain data
         if (res.request.statusText !== "OK") {
