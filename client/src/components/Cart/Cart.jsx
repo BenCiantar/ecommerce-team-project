@@ -46,7 +46,7 @@ const Cart = ({ cartItems, setCartItems, currentUser }) => {
           <hr />
           <div className="flex flex-col justify-around items-center">
             <div className="text-center my-6">
-              Total: {totalPrice === 0 ? "" : { totalPrice }}SEK
+              Total: {totalPrice}SEK
             </div>
             <button
               className="btn-primary w-2"
