@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { renderAllCategoryItems } from "../../scripts/tools";
 import { getFilteredItemsFromDb } from '../../scripts/api';
 
 const SearchResults = () => {
     const [results, setResults] = useState([]);
     let rows = [];
-    let searchInput = window.location.pathname.replace("/searchresults/", "");
+    const { query } = useParams();
 
     useEffect(() => {
-        getFilteredItemsFromDb(searchInput, setResults);
-    }, []); // eslint-disable-line
+        getFilteredItemsFromDb(query, setResults);
+    }, [query]);
 
     rows = renderAllCategoryItems(results);
 
