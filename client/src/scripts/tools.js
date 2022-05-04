@@ -4,35 +4,41 @@ import { getAllItemsFromDb } from "./api";
 
 export function renderAllCategoryItems(items, cartItems, setCartItems, currentUser) {
   let rows = [];
-  
+
   items.forEach((item, i) => {
     const path = `/product/${item._id}`;
-    
+
     rows.push(
-      <div key={`product${item._id}`} className="w-full h-96 p-3 bg-white border-2 flex flex-col justify-start items-center">
+
+      <div
+        key={`product${item._id}`}
+        className="w-full h-96 p-3 bg-white border-2 flex flex-col justify-start items-center"
+      >
         <div className="w-full h-1/2 pb-2">
-          <img src={item.image} alt={item.alt} className="w-full h-full object-cover" />
+          <img
+            src={item.image}
+            alt={item.alt}
+            className="w-full h-full object-cover"
+          />
         </div>
         <div className="w-full h-1/3">
-        <div className="w-full flex flex-col justify-start items-left">
-          <h1 className="text-lg mb-1 font-bold">{item.name}</h1>
-          <p className="text-sm pb-3 whitespace-nowrap overflow-hidden">{item.company}</p>
-          <p className="text-md pb-4">{item.shortdes}</p>
-        </div>
-        <div className="w-full flex flex-row justify-between items-center">
-          <Link className="w-1/2" to={path}>
+          <div className="w-full flex flex-col justify-start items-left">
+            <h1 className="text-lg mb-1 font-bold">{item.name}</h1>
+            <p className="text-sm pb-3">{item.company}</p>
+            <p className="text-md pb-4">{item.shortdes}</p>
+          </div>
+          <div className="w-full flex flex-row justify-between items-center">
+            <Link className="w-1/2" to={path}>
+              <button className="bg-green-600 text-white mr-1 w-full min-w-fit flex flex-row justify-center items-center p-1 shadow-md">
+                Read More
+              </button>
+            </Link>
             <button
-              className="btn-primary w-full mr-1"
+              className="bg-green-600 text-white ml-1 w-1/2 min-w-fit flex flex-row justify-center items-center p-1 shadow-md"
+              onClick={() => addItemToCart(item, cartItems, setCartItems, currentUser)}
             >
-            Read More
+              <FaShoppingCart /> <p className="ml-2">{item.price} kr</p>
             </button>
-          </Link>
-          <button
-            className="btn-primary ml-1"
-            onClick={() => addItemToCart(item, cartItems, setCartItems, currentUser)}
-          >
-            <FaShoppingCart /> <p className="ml-2">{item.price} kr</p>
-          </button>
           </div>
         </div>
       </div>
@@ -70,6 +76,7 @@ export function renderLiveSearchItems(items, setSelectedItem){
 }
 
 export function addItemToCart(item, cartItems, setCartItems, currentUser) {
+  console.log(cartItems);
   if (currentUser.isLoggedIn){
   const newArray = [...cartItems];
   let itemExists = false;
@@ -111,7 +118,6 @@ export function removeItemFromCart(item, cartItems, setCartItems) {
   setCartItems(newArray);
 }
 
-
 // add single item to single product page
 export function findItem(_id) {
   let item = {};
@@ -127,29 +133,98 @@ export function findItem(_id) {
   return item;
 }
 
-
-export function renderItemDetailsPage(selectedItem, cartItems, setCartItems, currentUser) {
+export function renderItemDetailsPage(selectedItem, cartItems, setCartItems, item, currentUser) {
   return (
     <>
-      <div className="flex items-center justify-center mt-5 ">
-        <h1 className=" text-xl ">{selectedItem.name}</h1>
-      </div>
-      <div className=" w-full ">
-        <img
-          className=" w-full p-3"
-          src={selectedItem.image}
-          alt="Ballet dancer on a street"
-        />
-      </div>
+      <main className="  flex flex-col items-center justify-center ">
+        {/* Header and title */}
+        <section className="  h-80 w-full relative">
+          <img
+            className=" object-cover h-full w-full"
+            src={selectedItem.image}
+            alt="h"
+          />
+          <article className="  absolute w-full h-full flex items-center justify-center top-0 left-0">
+            <div className=" bg-black bg-opacity-30 w-fit rounded-lg">
+              <h1 className=" text-white text-4xl"> {selectedItem.name} </h1>
+            </div>
+          </article>
+        </section>
 
-      <div className="flex items-center flex-col  p-3 ">
-        <h1 className=" text-2xl my-2.5"> Welcome to {selectedItem.company}</h1>
-        <div className=" flex p-3 bg-gray-200 w-3/4 items-center justify-between">
-          <h2 className="text-center"> Quick Details </h2>
-        </div>
-        <span className=" my-2.5 ">${selectedItem.price}</span>
-        <p className="text-center ">{selectedItem.main_description}</p>
-      </div>
+        {/* info  */}
+        <section
+          className=" bg-background w-full h-full flex items-center justify-center p-5
+          "
+        >
+          <article className="bg-white shadow-lg flex items-center justify-center flex-col ">
+            <div className="  w-full h-full flex items-center justify-center flex-col p-5  m-5 md:justify-evenly md:flex-row ">
+              <ul className=" flex items-center justify-center flex-col  w-fit ">
+                <li className="  text-2xl ">
+                  <h1 className="  ">{selectedItem.company}</h1>{" "}
+                </li>
+
+                <li className="  w-full md:w-3/4  pt-3">
+                  <h3 className=" text-center ">{selectedItem.description}</h3>
+                </li>
+              </ul>
+
+              {/* Quick details  */}
+              <article className="  bg-gray-300 border-2 border-black w-72 min-w-max rounded-lg text-sm mt-11 mb-5  md:mr-14  ">
+                <div className=" flex justify-center w-full ">
+                  <h2 className=" text-base "> Quick Details </h2>
+                </div>
+                <ul className=" list-disc pl-5">
+                  <li>Price - ${selectedItem.price}</li>
+                  <li>Minimum people - {selectedItem.people}</li>
+                  <li>Duration - {selectedItem.duration}hrs</li>
+                </ul>
+              </article>
+
+              {/* Add to cart */}
+              <button
+                className="bg-green-600 text-white mt-5  w-48 min-w-fit flex flex-row justify-center items-center p-1 shadow-md md:mr-14"
+                onClick={() => addItemToCart(item, cartItems, setCartItems, currentUser)}
+              >
+                <FaShoppingCart />{" "}
+                <p className="ml-2">{selectedItem.price} kr</p>
+              </button>
+            </div>
+
+            {/* small images */}
+            <article className=" w-full  p-1">
+              <ul className=" w-full  flex items-center justify-center ">
+                <li className="  w-1/3 h-40">
+                  <img
+                    className=" object-cover h-full w-full"
+                    src={selectedItem.smlImage1}
+                    alt="whale"
+                  />
+                </li>
+                <li className=" w-1/3 h-40">
+                  <img
+                    className=" object-cover h-full w-full"
+                    src={selectedItem.smlImage2}
+                    alt="whale"
+                  />
+                </li>
+
+                <li className=" w-1/3 h-40">
+                  <img
+                    className=" object-cover h-full w-full"
+                    src={selectedItem.smlImage3}
+                    alt="whale"
+                  />
+                </li>
+              </ul>
+            </article>
+
+            {/* main description */}
+            <p className=" w-full md:w-3/4 text-center  p-3 m-10 text-base  ">
+              {selectedItem.main_description}
+            </p>
+          </article>
+        </section>
+      </main>
     </>
   );
 }
@@ -199,37 +274,29 @@ export function renderOrderItems(orders) {
   return rows;
 }
 
-
 export function sortItems(items, sortMethod) {
   const sortedItems = [...items];
 
-    if (sortMethod === "default") {
-      return sortedItems;
-    }
-    else if (sortMethod === "Price-low-high") {
-      sortedItems.sort((a, b) => (a.price > b.price ? 1 : -1))
-      return sortedItems;
-    }
-    else if (sortMethod === "Price-high-low") {
-      sortedItems.sort((a, b) => (a.price > b.price ? -1 : 1))
-      return sortedItems;
-    }
-    else if (sortMethod === "Alpha-a-z") {
-      sortedItems.sort((a, b) => (a.name > b.name ? 1 : -1))
-      return sortedItems;
-    }
-    else if (sortMethod === "Alpha-z-a") {
-      sortedItems.sort((a, b) => (a.name > b.name ? -1 : 1))
-      return sortedItems;
-    }
-
+  if (sortMethod === "default") {
+    return sortedItems;
+  } else if (sortMethod === "Price-low-high") {
+    sortedItems.sort((a, b) => (a.price > b.price ? 1 : -1));
+    return sortedItems;
+  } else if (sortMethod === "Price-high-low") {
+    sortedItems.sort((a, b) => (a.price > b.price ? -1 : 1));
+    return sortedItems;
+  } else if (sortMethod === "Alpha-a-z") {
+    sortedItems.sort((a, b) => (a.name > b.name ? 1 : -1));
+    return sortedItems;
+  } else if (sortMethod === "Alpha-z-a") {
+    sortedItems.sort((a, b) => (a.name > b.name ? -1 : 1));
+    return sortedItems;
+  }
 }
-
 
 export function toggleHidden(target) {
   document.getElementById(target).classList.toggle("hidden");
 }
-
 
 export function renderLoginLogoutBtn(
   currentUser,
