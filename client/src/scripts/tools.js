@@ -28,8 +28,8 @@ export function renderAllCategoryItems(items, cartItems, setCartItems, currentUs
             <p className="text-md pb-4">{item.shortdes}</p>
           </div>
           <div className="w-full flex flex-row justify-between items-center">
-            <Link to={path}>
-              <button className="bg-green-600 text-white mr-1 w-1/2 min-w-fit flex flex-row justify-center items-center p-1 shadow-md">
+            <Link className="w-1/2" to={path}>
+              <button className="bg-green-600 text-white mr-1 w-full min-w-fit flex flex-row justify-center items-center p-1 shadow-md">
                 Read More
               </button>
             </Link>
