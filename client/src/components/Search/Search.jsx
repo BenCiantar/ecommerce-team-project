@@ -57,7 +57,6 @@ const Search = ({setSelectedItem, handleClick}) => {
             <form className="bg-white pb-1 flex flex-row justify-end items-center" onFocus={handleFocus} onBlur={handleBlur} onChange={handleChange} onSubmit={handleSubmit}>
                 <label htmlFor="search"></label>
                 <input type="text" onClick={handleClick} placeholder="Search" name="search" className="bg-white w-22 h-6 p-1 border border-slate-300" required />
-
                 <button type="submit" onClick={handleClick} value="submit" className="h-6 w-6 bg-white p-1 border-t border-r border-b border-slate-300"><FaSistrix /></button>
             </form>
             <div id="live-search" className="h-auto max-h-96 overflow-y-scroll w-96 bg-slate-200 absolute z-10 top-24 right-0 hidden">
