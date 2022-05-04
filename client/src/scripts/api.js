@@ -1,5 +1,3 @@
-
-import { FaTools } from "react-icons/fa";
 import { API_BASE_URL } from "../config";
 
 export function getItemsFromDb(category, setItems) {
@@ -19,9 +17,8 @@ export function getItemsFromDb(category, setItems) {
     });
 }
 
-//Check where this function is used, Should we remove it?
 export function getAllItemsFromDb(setAllItems) {
-  fetch(`${API_BASE_URL}/items`, {
+  fetch(`${API_BASE_URL}/all-items/`, {
     headers: {
       "content-type": "application/json",
     },
@@ -37,8 +34,42 @@ export function getAllItemsFromDb(setAllItems) {
     });
 }
 
+export function getFilteredItemsFromDb(query, setResults) {
+  fetch(`${API_BASE_URL}/filtered-items/${query}`, {
+    headers: {
+      "content-type": "application/json",
+    },
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      setResults(result);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
+
+// export function getSearchResults(searchInput){
+//   fetch(`${API_BASE_URL}/filtered-items/${searchInput}`, {
+//     headers: {
+//         "content-type": "application/json",
+//     },
+//     })
+//     .then((response) => {
+//         return response.json();
+//     })
+//     .then((result) => {
+//       console.log(searchInput);
+//         return result;
+//     })
+//     .catch((err) => {
+//         console.error(err);
+//     });
+// }
+
 export function findItemInDbById(id, setSelectedItem) {
-  console.log(id);
   fetch(`${API_BASE_URL}/item-by-id/${id}`, {
     headers: {
       "Content-Type": "application/json",
@@ -72,12 +103,13 @@ export function getOrdersFromDb(setOrders) {
       });
   }
 
-export function placeOrder(cartItems, setCartItems, totalPrice) {
+export function placeOrder(cartItems, setCartItems, totalPrice, currentUser) {
 
     const newOrderDetails = {
         "cart": cartItems,
         "total": totalPrice,
-        "timestamp": new Date()
+        "timestamp": new Date(),
+        "user": currentUser._id
     }
   
     fetch(`${API_BASE_URL}/place-order`, {

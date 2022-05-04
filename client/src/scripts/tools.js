@@ -1,16 +1,17 @@
-import { FaShoppingCart, FaDollarSign } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import { getAllItemsFromDb } from "./api";
 
-export function renderAllCategoryItems(items, cartItems, setCartItems) {
+export function renderAllCategoryItems(items, cartItems, setCartItems, currentUser) {
   let rows = [];
 
   items.forEach((item, i) => {
     const path = `/product/${item._id}`;
 
     rows.push(
+
       <div
-        key={i}
+        key={`product${item._id}`}
         className="w-full h-96 p-3 bg-white border-2 flex flex-col justify-start items-center"
       >
         <div className="w-full h-1/2 pb-2">
@@ -34,7 +35,7 @@ export function renderAllCategoryItems(items, cartItems, setCartItems) {
             </Link>
             <button
               className="bg-green-600 text-white ml-1 w-1/2 min-w-fit flex flex-row justify-center items-center p-1 shadow-md"
-              onClick={() => addItemToCart(item, cartItems, setCartItems)}
+              onClick={() => addItemToCart(item, cartItems, setCartItems, currentUser)}
             >
               <FaShoppingCart /> <p className="ml-2">{item.price} kr</p>
             </button>
@@ -46,7 +47,36 @@ export function renderAllCategoryItems(items, cartItems, setCartItems) {
   return rows;
 }
 
-export function addItemToCart(item, cartItems, setCartItems) {
+export function filterItems(items, query) {
+  let results = [];
+  for (let item of items) {
+    if (item.name.toLowerCase().includes(query.toLowerCase())){
+      results.push(item);
+    }
+  }
+  return results;
+}
+
+export function renderLiveSearchItems(items, setSelectedItem){
+  let rows = [];
+  items.forEach((item) => {
+    const path = `/product/${item._id}`;
+
+    rows.push(
+      <Link to={path} key={`liveSearch${item._id}`} >
+        <div onClick={() => setSelectedItem(item)} className="h-12 w-full p-8 flex flex-row justify-between items-center border-b border-l border-r border-slate-400">
+          <img className="w-14" src={item.image} alt={item.alt}></img>
+          <p className="w-18">{item.name}</p>
+          <p className="w-18">{item.price} kr</p>
+        </div>
+      </Link>
+    );
+  });
+  return rows;
+}
+
+export function addItemToCart(item, cartItems, setCartItems, currentUser) {
+  if (currentUser.isLoggedIn){
   const newArray = [...cartItems];
   let itemExists = false;
 
@@ -55,7 +85,6 @@ export function addItemToCart(item, cartItems, setCartItems) {
       itemExists = true;
       product.quantity++;
     }
-    console.log(item, "exist", product.quantity);
   }
 
   if (!itemExists) {
@@ -65,10 +94,12 @@ export function addItemToCart(item, cartItems, setCartItems) {
       quantity: 1,
       price: item.price,
     });
-    console.log(item, "does not exist");
   }
 
   setCartItems(newArray);
+ } else {
+   alert("You need to be logged in to add an item to cart");
+ }
 }
 
 export function removeItemFromCart(item, cartItems, setCartItems) {
@@ -101,12 +132,7 @@ export function findItem(_id) {
   return item;
 }
 
-export function renderItemDetailsPage(
-  selectedItem,
-  cartItems,
-  setCartItems,
-  item
-) {
+export function renderItemDetailsPage(selectedItem, cartItems, setCartItems, item, currentUser) {
   return (
     <>
       <main className="  flex flex-col items-center justify-center ">
@@ -204,21 +230,46 @@ export function renderItemDetailsPage(
 
 export function renderOrderItems(orders) {
   let rows = [];
-  let cartRows = [];
   orders.forEach((order) => {
     let timestamp = order.timestamp;
     let total = order.total;
     let id = order._id;
     let cartArray = order.cart;
+    let invoiceRows = [];
+    let email = order.user;
+ 
     for (let i = 0; i < cartArray.length; i++) {
-      cartRows.push(
-        <p>{cartArray[i].name}</p>,
-        <p>{cartArray[i].price}</p>,
-        <p>{cartArray[i].quantity}</p>
-      );
-    }
-    rows.push(<p>{timestamp}</p>, <p>{total}</p>, <p>{id}</p>, cartRows);
-  });
+      invoiceRows.push(
+        <div key={`cart${cartArray[i].name}`}>
+          <section>Product: {cartArray[i].name}</section>
+          <section>Price: {cartArray[i].price}SEK</section>
+          <section>Quantity: {cartArray[i].quantity}</section>
+          <br />
+        </div>
+      )}
+
+    rows.push(
+      <div key={`order${id}`} className =" grid grid-cols-1 gap-5 p-5 md:grid-cols-3 lg:grid-cols-4 ">
+        <div>
+          <section>#{id} <br/> {email} </section>
+
+        </div>
+        <div>
+          <section>{timestamp}</section>
+        </div>
+        <div>
+          <section>{total}SEK</section>
+        </div>
+        <div>
+          {invoiceRows}
+        </div>
+        
+        </div>,
+        <div key={`hr${id}`}>
+          <hr />
+        </div>
+    )
+  }); 
   return rows;
 }
 
@@ -249,7 +300,7 @@ export function toggleHidden(target) {
 export function renderLoginLogoutBtn(
   currentUser,
   setCurrentUser,
-  isMobileMenuOpen,
+  handleClick,
   setisMobileMenuOpen
 ) {
   const logOutUser = () => {
@@ -259,7 +310,7 @@ export function renderLoginLogoutBtn(
   const rows = [];
   if (currentUser.isLoggedIn) {
     rows.push(
-      <NavLink to="/" className="" onClick={() => logOutUser()}>
+      <NavLink key={"logOutBtn"} to="/" className="" onClick={() => logOutUser()}>
         <h2>Log out</h2>
       </NavLink>
     );
@@ -267,8 +318,9 @@ export function renderLoginLogoutBtn(
     rows.push(
       <NavLink
         to="/login"
+        key={"logInBtn"}
         className=""
-        onClick={() => setisMobileMenuOpen(false)}
+        onClick={handleClick}
       >
         <h2>Log in</h2>
       </NavLink>
