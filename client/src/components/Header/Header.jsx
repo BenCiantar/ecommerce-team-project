@@ -5,6 +5,7 @@ import {
   AiOutlineMenu,
   AiOutlineClose,
 } from "react-icons/ai";
+// import { FiLogIn } from "react-icons/fi";
 import { toggleHidden, renderLoginLogoutBtn } from "../../scripts/tools";
 import { Cart, Search } from "../index";
 
@@ -12,34 +13,38 @@ const Header = (props) => {
   const [isMobileMenuOpen, setisMobileMenuOpen] = useState(false);
 
   const showMobileMenu = () => {
-    (isMobileMenuOpen) ? setisMobileMenuOpen(false) : setisMobileMenuOpen(true);
-  }
+    isMobileMenuOpen ? setisMobileMenuOpen(false) : setisMobileMenuOpen(true);
+  };
 
   const handleClick = () => {
-    const cartHidden = document.getElementById('cart').classList.contains('hidden');
+    const cartHidden = document
+      .getElementById("cart")
+      .classList.contains("hidden");
 
-    if (!cartHidden){
-        toggleHidden('cart');
+    if (!cartHidden) {
+      toggleHidden("cart");
     }
 
     setisMobileMenuOpen(false);
-  }
+  };
 
   const handleClickCart = () => {
     toggleHidden("cart");
 
     setisMobileMenuOpen(false);
-  }
+  };
 
   const handleClickMenu = () => {
-    const cartHidden = document.getElementById('cart').classList.contains('hidden');
+    const cartHidden = document
+      .getElementById("cart")
+      .classList.contains("hidden");
 
-    if (!cartHidden){
-        toggleHidden('cart');
+    if (!cartHidden) {
+      toggleHidden("cart");
     }
 
     showMobileMenu();
-  }
+  };
 
   const loginRows = renderLoginLogoutBtn(
     props.currentUser,
@@ -71,7 +76,9 @@ const Header = (props) => {
           </NavLink>
         </div>
         <div className="cart-and-menu flex items-center lg:pr-4">
-          {loginRows}
+          <div className=" px-3 font-bold min-w-max">{loginRows}</div>
+          {/* couldn't hide for xs screens */}
+          {/* <FiLogIn className=" sm:hidden px-3 font-bold min-w-max"></FiLogIn> */}
           <ul className="hidden menu-list lg:flex lg:flex-row text-base font-bold pr-3 ">
             <NavLink onClick={handleClick} to="/" className="">
               <li className="menu-list-item px-3 ">Home</li>
@@ -101,14 +108,14 @@ const Header = (props) => {
         <Cart {...props} />
       </nav>
       <section className="w-full h-8 bg-white flex flex-row justify-end items-center pr-6">
-        <Search setSelectedItem={ props.setSelectedItem } />
+        <Search setSelectedItem={ props.setSelectedItem } handleClick={handleClick} />
       </section>
     </header>
   );
 
-  function MobileMenu(){
+  function MobileMenu() {
     return (
-      <nav className="top-12 absolute lg:hidden bg-black text-white z-10 right-0 overflow-x-hidden h-full w-full">
+      <nav className="top-24 absolute lg:hidden bg-black text-white z-10 right-0 overflow-x-hidden h-full w-full">
           <ul className=" menu-list flex flex-col text-base font-bold items-center" onClick={() => setisMobileMenuOpen(false)} >
                   <NavLink onClick={handleClick} to="/" className="" >
                     <li className="menu-list-item py-2 hover:bg-white hover:text-black " >Home</li>
@@ -122,7 +129,7 @@ const Header = (props) => {
               </ul>
       </nav>
     );
-  };
+  }
 };
 
 export default Header;
