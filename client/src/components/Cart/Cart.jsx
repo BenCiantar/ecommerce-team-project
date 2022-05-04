@@ -14,7 +14,7 @@ const Cart = ({ cartItems, setCartItems, currentUser }) => {
 
   return (
     <div
-      className="z-50 absolute bg-slate-300 hidden w-full overflow-x-hidden top-12 overflow-y-auto h-full right-0 min-w-400"
+      className="z-50 absolute bg-slate-300 hidden w-full overflow-x-hidden top-24 overflow-y-auto h-full right-0 min-w-400"
       id="cart"
     >
       <div className="overlay">
