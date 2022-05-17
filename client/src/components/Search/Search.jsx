@@ -53,7 +53,7 @@ const Search = ({setSelectedItem, handleClick}) => {
     let rows = renderLiveSearchItems(searchResults, setSelectedItem);
 
     return (
-        <>
+        <section>
             <form className="bg-white pb-1 flex flex-row justify-end items-center" onFocus={handleFocus} onBlur={handleBlur} onChange={handleChange} onSubmit={handleSubmit}>
                 <label htmlFor="search"></label>
                 <input type="text" onClick={handleClick} placeholder="Search" name="search" className="bg-white w-22 h-6 p-1 border border-slate-300" required />
@@ -62,7 +62,7 @@ const Search = ({setSelectedItem, handleClick}) => {
             <div id="live-search" className="h-auto max-h-96 overflow-y-scroll w-96 bg-slate-200 absolute z-10 top-24 right-0 hidden">
                 {rows}
             </div>
-        </>
+        </section>
     )  
 
 };

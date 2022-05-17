@@ -9,15 +9,15 @@ const Cart = ({ cartItems, setCartItems, currentUser }) => {
   );
 
   return (
-    <div
+    <section
       className="z-50 absolute bg-white hidden w-full overflow-x-hidden top-24 overflow-y-auto h-full right-0 min-w-400"
       id="cart"
     >
       <div className="overlay h-full">
-        <section className="h-80 ">
+        <div className="h-80 ">
           <h1 className="text-lg text-center pt-6 mb-20">Your shopping cart</h1>
           {cartItems.map((obj) => (
-            <div
+            <article
               key={`cartItem${obj.name}`}
               className=" flex flex-row justify-between items-center bg-slate-200 m-4"
             >
@@ -41,7 +41,7 @@ const Cart = ({ cartItems, setCartItems, currentUser }) => {
                 </button>
               </div>
               <div className="">{obj.price * obj.quantity}SEK</div>
-            </div>
+            </article>
           ))}
           <hr />
           <div className="flex flex-col justify-around items-center">
@@ -57,9 +57,9 @@ const Cart = ({ cartItems, setCartItems, currentUser }) => {
               Place Order
             </button>
           </div>
-        </section>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
