@@ -10,7 +10,7 @@ export function renderAllCategoryItems(items, cartItems, setCartItems, currentUs
 
     rows.push(
 
-      <div
+      <article
         key={`product${item._id}`}
         className="w-full h-96 p-3 bg-white border-2 flex flex-col justify-start items-center"
       >
@@ -41,7 +41,7 @@ export function renderAllCategoryItems(items, cartItems, setCartItems, currentUs
             </button>
           </div>
         </div>
-      </div>
+      </article>
     );
   });
   return rows;
@@ -241,16 +241,16 @@ export function renderOrderItems(orders) {
  
     for (let i = 0; i < cartArray.length; i++) {
       invoiceRows.push(
-        <div key={`cart${cartArray[i].name}`}>
+        <article key={`cart${cartArray[i].name}`}>
           <section>Product: {cartArray[i].name}</section>
           <section>Price: {cartArray[i].price}SEK</section>
           <section>Quantity: {cartArray[i].quantity}</section>
           <br />
-        </div>
+        </article>
       )}
 
     rows.push(
-      <div key={`order${id}`} className =" grid grid-cols-1 gap-5 p-5 md:grid-cols-3 lg:grid-cols-4 ">
+      <article key={`order${id}`} className =" grid grid-cols-1 gap-5 p-5 md:grid-cols-3 lg:grid-cols-4 ">
         <div>
           <section>#{id} <br/> {email} </section>
 
@@ -265,7 +265,7 @@ export function renderOrderItems(orders) {
           {invoiceRows}
         </div>
         
-        </div>,
+        </article>,
         <div key={`hr${id}`}>
           <hr />
         </div>

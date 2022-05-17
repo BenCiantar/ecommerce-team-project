@@ -12,7 +12,7 @@ const Orders = () => {
   let rows = renderOrderItems(orders);
 
   return (
-     <>
+     <main>
       <div className =" grid grid-cols-1 gap-5 p-5 md:grid-cols-3 lg:grid-cols-4 font-semibold text-stone-400">
         <h2>Order Number <br/> User Email</h2>
         <h2>Order Date</h2>
@@ -26,7 +26,7 @@ const Orders = () => {
         {rows}
         <hr />
       </div>
-     </>
+     </main>
   );
 };
 
